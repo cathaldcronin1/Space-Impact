@@ -44,12 +44,13 @@
     <Compile Include="Command\NoCommand.cs" />
     <Compile Include="Decorator\BasicGun.cs" />
     <Compile Include="Decorator\LightArmor.cs" />
+    <Compile Include="Decorator\ShipHull.cs" />
     <Compile Include="Factory\ShipFactory.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decorator\Ship.cs" />
-    <Compile Include="Decorator\ShipHull.cs" />
     <Compile Include="Decorator\ShipComponent.cs" />
   </ItemGroup>
   <ItemGroup>
