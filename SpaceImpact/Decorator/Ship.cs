@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+
+namespace SpaceImpact
+{
+    public interface Ship
+    {
+        int Hitpoints { get; set; }
+        int WeaponDamage { get; set; }
+        string Description { get; set; }
+    }
+}

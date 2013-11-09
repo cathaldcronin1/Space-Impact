@@ -1,0 +1,10 @@
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\bin\WindowsGL\Debug\SDL.dll
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\bin\WindowsGL\Debug\Lidgren.Network.dll
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\bin\WindowsGL\Debug\OpenTK.dll
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\bin\WindowsGL\Debug\Tao.Sdl.dll
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\obj\x86\Debug\SpaceImpact.exe
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\obj\x86\Debug\SpaceImpact.pdb
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\bin\WindowsGL\Debug\SpaceImpact.exe
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\bin\WindowsGL\Debug\SpaceImpact.pdb
+C:\Repos\Software_Architecture\software_architecture_project\SpaceImpact\SpaceImpact\obj\x86\Debug\SpaceImpact.csprojResolveAssemblyReference.cache
