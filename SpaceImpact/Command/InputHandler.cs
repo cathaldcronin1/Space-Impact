@@ -34,20 +34,24 @@ namespace SpaceImpact
 
         public Command HandleInput()
         {
-            if (currentkeyState.IsKeyDown(Keys.Left))
+            if (currentkeyState.IsKeyDown(Keys.Left) && !oldKeyState.IsKeyDown(Keys.Left))
             {
+                Console.WriteLine("Left key pressed");
                 return moveLeft;
             }
-            else if (currentkeyState.IsKeyDown(Keys.Right))
+            else if (currentkeyState.IsKeyDown(Keys.Right) && !oldKeyState.IsKeyDown(Keys.Right))
             {
+                Console.WriteLine("Right key pressed");
                 return moveRight;
             }
-            else if (currentkeyState.IsKeyDown(Keys.Up))
+            else if (currentkeyState.IsKeyDown(Keys.Up) && !oldKeyState.IsKeyDown(Keys.Up))
             {
+                Console.WriteLine("Up key pressed");
                 return moveUp;
             }
-            else if (currentkeyState.IsKeyDown(Keys.Down))
+            else if (currentkeyState.IsKeyDown(Keys.Down) && !oldKeyState.IsKeyDown(Keys.Down))
             {
+                Console.WriteLine("Down key pressed");
                 return moveDown;
             }
             return noCommand;
