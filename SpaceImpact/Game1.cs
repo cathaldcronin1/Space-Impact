@@ -20,26 +20,12 @@ namespace SpaceImpact
         SpriteBatch spriteBatch;
         ShipHull player;
         InputHandler inputHandler;
+        Texture2D playerTexture;
 
-        public Game1()
-            : base()
+        public Game1(): base()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
-            Ship testShip = new BasicGun(new LightArmor(new ShipHull()));
-            Console.WriteLine(testShip.Hitpoints);
-            Console.WriteLine(testShip.WeaponDamage);
-            Console.WriteLine(testShip.Description);
-
-            int rand = 20;
-            ShipFactory factory = new ShipFactory();
-            player = new ShipHull();
-            Console.WriteLine(player.Hitpoints);
-            Console.WriteLine(player.WeaponDamage);
-            Console.WriteLine(player.Description);
-
-            inputHandler = new InputHandler(player);
         }
 
         /// <summary>
@@ -51,7 +37,9 @@ namespace SpaceImpact
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            player = new ShipHull(Content.Load<Texture2D>("player.png"), new Vector2(100, 100), Vector2.Zero);
+            inputHandler = new InputHandler(player);
+           
             base.Initialize();
         }
 
@@ -63,7 +51,7 @@ namespace SpaceImpact
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            //playerTexture = ;
             // TODO: use this.Content to load your game content here
         }
 
@@ -100,6 +88,11 @@ namespace SpaceImpact
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            player.Draw(spriteBatch);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

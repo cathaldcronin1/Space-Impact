@@ -66,9 +66,10 @@ namespace SpaceImpact
 
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spritebatch)
         {
-
+            spritebatch.Draw(textureImage, this.position, Color.White);
+         
         }
 
         public void MoveUp()

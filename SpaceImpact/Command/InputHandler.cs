@@ -34,7 +34,7 @@ namespace SpaceImpact
 
         public Command HandleInput()
         {
-            if (currentkeyState.IsKeyDown(Keys.Left) && !oldKeyState.IsKeyDown(Keys.Left))
+            if (currentkeyState.IsKeyDown(Keys.Left)) //&& //!oldKeyState.IsKeyDown(Keys.Left))
             {
                 Console.WriteLine("Left key pressed");
                 return moveLeft;
