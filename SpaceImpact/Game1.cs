@@ -19,8 +19,8 @@ namespace SpaceImpact
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         ShipHull player;
+        Ship enemy;
         InputHandler inputHandler;
-        Texture2D playerTexture;
 
         public Game1(): base()
         {
@@ -37,7 +37,10 @@ namespace SpaceImpact
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            ShipFactory factory = new ShipFactory(this.Content);
+
             player = new ShipHull(Content.Load<Texture2D>("player.png"), new Vector2(100, 100), Vector2.Zero);
+            enemy = factory.CreateEnemy(0);
             inputHandler = new InputHandler(player);
            
             base.Initialize();
@@ -74,8 +77,8 @@ namespace SpaceImpact
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-
             inputHandler.Update();
+            enemy.Update();
             base.Update(gameTime);
         }
 
@@ -91,6 +94,7 @@ namespace SpaceImpact
             spriteBatch.Begin();
 
             player.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
 
             spriteBatch.End();
 

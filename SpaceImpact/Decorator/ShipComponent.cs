@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceImpact
 {
@@ -30,6 +32,16 @@ namespace SpaceImpact
         {
             get { return tempShip.Description; }
             set { tempShip.Description = value; }
+        }
+
+        public void Update()
+        {
+            tempShip.Update();
+        }
+
+        public void Draw(SpriteBatch spritebatch)
+        {
+            tempShip.Draw(spritebatch);
         }
     }
 }

@@ -52,6 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decorator\Ship.cs" />
     <Compile Include="Decorator\ShipComponent.cs" />
+    <Compile Include="State\ShipAI.cs" />
+    <Compile Include="State\BasicShipAI.cs" />
+    <Compile Include="State\ZigZagAI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -74,6 +77,9 @@
       <Link>SDL.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\enemy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -81,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Composite\" />
-    <Folder Include="State\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

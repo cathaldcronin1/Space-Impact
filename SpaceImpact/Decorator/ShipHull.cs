@@ -13,6 +13,7 @@ namespace SpaceImpact
         private Texture2D textureImage;
         protected Vector2 position;
         protected Vector2 speed;
+        protected ShipAI currentAI = new BasicShipAI(); 
 
         public ShipHull()
         {
@@ -26,6 +27,11 @@ namespace SpaceImpact
             this.speed = speed;
         }
 
+        public Vector2 Position
+        {
+            get { return position; }
+        }
+        
         // Get the width of the player ship
         public int Width
         {
@@ -56,40 +62,34 @@ namespace SpaceImpact
             set { Description = value; }
         }
 
-        public void Initialize()
-        {
-
-        }
-
         public void Update()
         {
-
+            currentAI.Update(this);
         }
 
         public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.Draw(textureImage, this.position, Color.White);
-         
         }
 
         public void MoveUp()
         {
-            this.position.Y -= 1;
+            this.position.Y -= 2;
         }
 
         public void MoveDown()
         {
-            this.position.Y += 1;
+            this.position.Y += 2;
         }
 
         public void MoveLeft()
         {
-            this.position.X -= 1;
+            this.position.X -= 2;
         }
 
         public void MoveRight()
         {
-            this.position.X += 1;
+            this.position.X += 2;
         }
     }
 }

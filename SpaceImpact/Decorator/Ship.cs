@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceImpact
 {
@@ -11,5 +12,8 @@ namespace SpaceImpact
         int Hitpoints { get; set; }
         int WeaponDamage { get; set; }
         string Description { get; set; }
+
+        void Update();
+        void Draw(SpriteBatch spritebatch);
     }
 }
