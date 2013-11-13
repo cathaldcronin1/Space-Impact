@@ -52,6 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decorator\Ship.cs" />
     <Compile Include="Decorator\ShipComponent.cs" />
+    <Compile Include="State\AggressiveState.cs" />
+    <Compile Include="State\passiveState.cs" />
+    <Compile Include="State\ShipBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -81,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Composite\" />
-    <Folder Include="State\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
