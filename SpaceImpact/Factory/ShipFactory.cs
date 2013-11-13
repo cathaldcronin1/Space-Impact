@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceImpact
 {
     public class ShipFactory
     {
+        private ContentManager content;
+
+        public ShipFactory(ContentManager content) 
+        {
+            this.content = content;
+        }
+
         public Ship CreateEnemy(int rand)
         {
             if (rand > 90)
@@ -29,7 +39,7 @@ namespace SpaceImpact
 
         private Ship CreateWeakEnemy()
         {
-            return new BasicGun(new ShipHull());
+            return new BasicGun(new ShipHull(content.Load<Texture2D>("enemy.png"), new Vector2(700,200),Vector2.Zero));
         }
     }
 }
