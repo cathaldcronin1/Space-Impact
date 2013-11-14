@@ -17,8 +17,8 @@ namespace SpaceImpact
         private Command noCommand;
         private Command currentCommand;
 
-        private KeyboardState oldKeyState;
-        private KeyboardState currentkeyState;
+        GamePadState gamePadState;
+        I_InputDevice input;
 
         public InputHandler(ShipHull player)
         {
@@ -29,27 +29,32 @@ namespace SpaceImpact
             moveDown = (Command)(new MoveDownCommand(playerShip));
             noCommand = (Command)(new NoCommand());
 
-            currentkeyState = Keyboard.GetState();
+            gamePadState = GamePad.GetState(PlayerIndex.One);
+
+            if (gamePadState.IsConnected)
+                input = new ControllerInput();
+            else
+                input = new KeyboardInput();
         }
 
         public Command HandleInput()
         {
-            if (currentkeyState.IsKeyDown(Keys.Left))
+            if (input.Left())
             {
                 Console.WriteLine("Left key pressed");
                 return moveLeft;
             }
-            else if (currentkeyState.IsKeyDown(Keys.Right))
+            else if (input.Right())
             {
                 Console.WriteLine("Right key pressed");
                 return moveRight;
             }
-            else if (currentkeyState.IsKeyDown(Keys.Up))
+            else if (input.Up())
             {
                 Console.WriteLine("Up key pressed");
                 return moveUp;
             }
-            else if (currentkeyState.IsKeyDown(Keys.Down))
+            else if (input.Down())
             {
                 Console.WriteLine("Down key pressed");
                 return moveDown;
@@ -60,12 +65,10 @@ namespace SpaceImpact
 
         public void Update()
         {
-            currentkeyState = Keyboard.GetState();
 
             currentCommand = HandleInput();
             currentCommand.Execute();
-
-            oldKeyState = currentkeyState;
+            input.Update();
         }
     }
 }

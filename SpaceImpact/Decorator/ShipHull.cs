@@ -13,7 +13,7 @@ namespace SpaceImpact
         private Texture2D textureImage;
         protected Vector2 position;
         protected Vector2 speed;
-        protected ShipAI currentAI = new BasicShipAI(); 
+        //protected ShipAI currentAI = new BasicShipAI(); 
 
         public ShipHull()
         {
@@ -64,7 +64,7 @@ namespace SpaceImpact
 
         public void Update()
         {
-            currentAI.Update(this);
+            //currentAI.Update(this);
         }
 
         public void Draw(SpriteBatch spritebatch)
