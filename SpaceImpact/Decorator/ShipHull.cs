@@ -13,18 +13,19 @@ namespace SpaceImpact
         private Texture2D textureImage;
         protected Vector2 position;
         protected Vector2 velocity;
-        protected I_ShipState currentState = new AggressiveState(); 
+        protected I_ShipState currentState;
 
         public ShipHull()
         {
             // TODO: Complete member initialization
         }
 
-        public ShipHull(Texture2D textureImage, Vector2 position, Vector2 speed)
+        public ShipHull(Texture2D textureImage, Vector2 position, Vector2 speed, I_ShipState currentState)
         {
             this.textureImage = textureImage;
             this.position = position;
             this.velocity = speed;
+            this.currentState = currentState;
         }
 
         public Vector2 Position
@@ -64,7 +65,13 @@ namespace SpaceImpact
 
         public void Update(GameTime gameTime)
         {
-            currentState.Update(gameTime, this);
+            if (currentState != null)
+            {
+                currentState.Update(gameTime, this);
+                //Console.WriteLine("State before change is: " + currentState.ToString());
+                currentState = currentState.setState(new AggressiveState());
+                //Console.WriteLine("State after change is: " + currentState.ToString());
+            }
         }
 
         public void Draw(SpriteBatch spritebatch)

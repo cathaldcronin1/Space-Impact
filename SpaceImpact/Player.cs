@@ -10,7 +10,7 @@ namespace SpaceImpact
     class Player : ShipHull//, Ship
     {
         public Player(Texture2D textureImage, Vector2 position, Vector2 speed)
-            : base(textureImage, position, speed)
+            : base(textureImage, position, speed,null)
         {
 
         }

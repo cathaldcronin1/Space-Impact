@@ -39,7 +39,7 @@ namespace SpaceImpact
 
         private Ship CreateWeakEnemy()
         {
-            return new BasicGun(new ShipHull(content.Load<Texture2D>("enemy.png"), new Vector2(700,200),Vector2.Zero));
+            return new BasicGun(new ShipHull(content.Load<Texture2D>("enemy.png"), new Vector2(700,200),Vector2.Zero, new PassiveState()));
         }
     }
 }
