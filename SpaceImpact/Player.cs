@@ -7,13 +7,51 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 namespace SpaceImpact
 {
-    class Player : ShipHull//, Ship
+    public class Player : ShipHull, I_Subject
     {
+        List<I_Observer> observers;
+        private int score, health, ammo;
+
         public Player(Texture2D textureImage, Vector2 position, Vector2 speed)
             : base(textureImage, position, speed)
         {
-
+            observers = new List<I_Observer>();
         }
 
+        public void Register(I_Observer o)
+        {
+            observers.Add(o);
+        }
+
+        public void Unregister(I_Observer o)
+        {
+            observers.Remove(o);
+        }
+
+        public void NotifyObserver()
+        {
+            foreach (I_Observer o in observers)
+            {
+                o.UpdateStats(score, health, ammo);
+            }
+        }
+
+        public void SetScore(int score)
+        {
+            this.score = score;
+            NotifyObserver();
+        }
+
+        public void SetHealth(int health)
+        {
+            this.health = health;
+            NotifyObserver();
+        }
+
+        public void SetAmmo(int ammo)
+        {
+            this.ammo = ammo;
+            NotifyObserver();
+        }
     }
 }

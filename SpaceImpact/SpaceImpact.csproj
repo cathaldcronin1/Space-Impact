@@ -50,6 +50,9 @@
     <Compile Include="Decorator\ShipHull.cs" />
     <Compile Include="Factory\ShipFactory.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Observer\HUDDisplay.cs" />
+    <Compile Include="Observer\I_Observer.cs" />
+    <Compile Include="Observer\I_Subject.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectile.cs" />
@@ -94,6 +97,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Composite\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\MyFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
