@@ -34,9 +34,9 @@ namespace SpaceImpact
             set { tempShip.Description = value; }
         }
 
-        public void Update()
+        public void Update(GameTime gametime)
         {
-            tempShip.Update();
+            tempShip.Update(gametime);
         }
 
         public void Draw(SpriteBatch spritebatch)

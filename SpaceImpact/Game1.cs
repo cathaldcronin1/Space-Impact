@@ -20,6 +20,7 @@ namespace SpaceImpact
         SpriteBatch spriteBatch;
         ShipHull player;
         Ship enemy;
+        Projectile bullet;
         InputHandler inputHandler;
 
         public Game1(): base()
@@ -41,6 +42,7 @@ namespace SpaceImpact
 
             player = new ShipHull(Content.Load<Texture2D>("player.png"), new Vector2(100, 100), Vector2.Zero);
             enemy = factory.CreateEnemy(0);
+            bullet = new Projectile(Content.Load<Texture2D>("bullet.png"), new Vector2(100, 200), new Vector2(1,0), 5);
             inputHandler = new InputHandler(player);
            
             base.Initialize();
@@ -77,8 +79,9 @@ namespace SpaceImpact
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            inputHandler.Update();
-            enemy.Update();
+            bullet.Update(gameTime);
+            inputHandler.Update(gameTime);
+            enemy.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -93,6 +96,7 @@ namespace SpaceImpact
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            bullet.Draw(spriteBatch);
             player.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
 

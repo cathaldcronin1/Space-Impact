@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
-namespace SpaceImpact.State
+namespace SpaceImpact
 {
-    class passiveState
+    public class PassiveState : I_ShipState
     {
+        public void Update(GameTime gameTime, ShipHull ship)
+        {
+            ship.MoveLeft();
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace SpaceImpact
         int WeaponDamage { get; set; }
         string Description { get; set; }
 
-        void Update();
+        void Update(GameTime gameTime);
         void Draw(SpriteBatch spritebatch);
     }
 }

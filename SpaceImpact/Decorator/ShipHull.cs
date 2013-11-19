@@ -12,8 +12,8 @@ namespace SpaceImpact
 
         private Texture2D textureImage;
         protected Vector2 position;
-        protected Vector2 speed;
-        //protected ShipAI currentAI = new BasicShipAI(); 
+        protected Vector2 velocity;
+        protected I_ShipState currentState = new AggressiveState(); 
 
         public ShipHull()
         {
@@ -24,7 +24,7 @@ namespace SpaceImpact
         {
             this.textureImage = textureImage;
             this.position = position;
-            this.speed = speed;
+            this.velocity = speed;
         }
 
         public Vector2 Position
@@ -62,9 +62,9 @@ namespace SpaceImpact
             set { Description = value; }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            //currentAI.Update(this);
+            currentState.Update(gameTime, this);
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -74,22 +74,22 @@ namespace SpaceImpact
 
         public void MoveUp()
         {
-            this.position.Y -= 2;
+            this.position.Y -= 1.5f;
         }
 
         public void MoveDown()
         {
-            this.position.Y += 2;
+            this.position.Y += 1.5f;
         }
 
         public void MoveLeft()
         {
-            this.position.X -= 2;
+            this.position.X -= 1f;
         }
 
         public void MoveRight()
         {
-            this.position.X += 2;
+            this.position.X += 1f;
         }
     }
 }

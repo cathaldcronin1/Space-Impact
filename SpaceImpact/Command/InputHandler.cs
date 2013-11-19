@@ -14,8 +14,6 @@ namespace SpaceImpact
         private Command moveLeft;
         private Command moveUp;
         private Command moveDown;
-        private Command noCommand;
-        private Command currentCommand;
 
         GamePadState gamePadState;
         I_InputDevice input;
@@ -23,11 +21,10 @@ namespace SpaceImpact
         public InputHandler(ShipHull player)
         {
             playerShip = player;
-            moveRight = (Command)(new MoveRightCommand(playerShip));
-            moveLeft = (Command)(new MoveLeftCommand(playerShip));
-            moveUp = (Command)(new MoveUpCommand(playerShip));
-            moveDown = (Command)(new MoveDownCommand(playerShip));
-            noCommand = (Command)(new NoCommand());
+            moveRight = new MoveRightCommand(playerShip);
+            moveLeft = new MoveLeftCommand(playerShip);
+            moveUp = new MoveUpCommand(playerShip);
+            moveDown = new MoveDownCommand(playerShip);
 
             gamePadState = GamePad.GetState(PlayerIndex.One);
 
@@ -37,37 +34,33 @@ namespace SpaceImpact
                 input = new KeyboardInput();
         }
 
-        public Command HandleInput()
+        public void HandleInput()
         {
             if (input.Left())
             {
                 Console.WriteLine("Left key pressed");
-                return moveLeft;
+                moveLeft.Execute();
             }
-            else if (input.Right())
+            if (input.Right())
             {
                 Console.WriteLine("Right key pressed");
-                return moveRight;
+                moveRight.Execute();
             }
-            else if (input.Up())
+            if (input.Up())
             {
                 Console.WriteLine("Up key pressed");
-                return moveUp;
+                moveUp.Execute();
             }
-            else if (input.Down())
+            if (input.Down())
             {
                 Console.WriteLine("Down key pressed");
-                return moveDown;
+                moveDown.Execute();
             }
-            return noCommand;
         }
     
-
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-
-            currentCommand = HandleInput();
-            currentCommand.Execute();
+            HandleInput();
             input.Update();
         }
     }
