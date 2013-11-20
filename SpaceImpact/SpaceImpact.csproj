@@ -45,6 +45,8 @@
     <Compile Include="Command\MoveRightCommand.cs" />
     <Compile Include="Command\MoveUpCommand.cs" />
     <Compile Include="Command\NoCommand.cs" />
+    <Compile Include="Composite\GamePlayScreen.cs" />
+    <Compile Include="Composite\StartScreen.cs" />
     <Compile Include="Decorator\BasicGun.cs" />
     <Compile Include="Decorator\LightArmor.cs" />
     <Compile Include="Decorator\ShipHull.cs" />
@@ -90,6 +92,10 @@
     <Content Include="Content\enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\game1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\gameover.png" />
     <Content Include="Content\player.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

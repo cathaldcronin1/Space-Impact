@@ -28,5 +28,15 @@ namespace SpaceImpact
             else if (ship.Position.Y > 350)
                 goingDown = false;
         }
+
+        public I_ShipState setState(I_ShipState newState)
+        {
+            return newState;
+        }
+
+        public override string ToString()
+        {
+            return "aggressive state";
+        }
     }
 }

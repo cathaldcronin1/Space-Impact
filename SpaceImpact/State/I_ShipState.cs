@@ -9,5 +9,6 @@ namespace SpaceImpact
     public interface I_ShipState
     {
         void Update(GameTime gameTime, ShipHull ship);
+        I_ShipState setState(I_ShipState newState);
     }
 }
