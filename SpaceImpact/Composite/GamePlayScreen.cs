@@ -10,20 +10,22 @@ namespace SpaceImpact
     class GamePlayScreen
     {
         private Game1 game;
-        ShipHull player;
+        Player player;
         Ship enemy;
         Projectile bullet;
         InputHandler inputHandler;
         ShipFactory factory;
+        HUDDisplay hud;
 
         public GamePlayScreen(Game1 game)
         {
             this.game = game;
             factory = new ShipFactory(this.game.Content);
-            player = new ShipHull(game.Content.Load<Texture2D>("player.png"), new Vector2(100, 100), Vector2.Zero, null);
+            player = new Player(game.Content.Load<Texture2D>("player.png"), new Vector2(100, 100), Vector2.Zero);
             enemy = factory.CreateEnemy(0);
             bullet = new Projectile(game.Content.Load<Texture2D>("bullet.png"), new Vector2(100, 200), new Vector2(1, 0), 5);
             inputHandler = new InputHandler(player);
+            hud = new HUDDisplay(player, this.game.Content.Load<SpriteFont>("MyFont"));
         }
 
         public void Update(GameTime gameTime)
@@ -38,6 +40,7 @@ namespace SpaceImpact
             bullet.Draw(spriteBatch);
             player.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
+            hud.Draw(spriteBatch);
         }
     }
 }

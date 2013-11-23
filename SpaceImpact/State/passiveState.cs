@@ -10,6 +10,7 @@ namespace SpaceImpact
     {
         public void Update(GameTime gameTime, ShipHull ship)
         {
+            // AI logic goes here
             ship.MoveLeft();
         }
 

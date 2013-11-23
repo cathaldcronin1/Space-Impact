@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Threading;
 
 namespace SpaceImpact
 {
@@ -68,9 +69,10 @@ namespace SpaceImpact
             if (currentState != null)
             {
                 currentState.Update(gameTime, this);
-                //Console.WriteLine("State before change is: " + currentState.ToString());
+                Console.WriteLine("State before change is: " + currentState.ToString());
                 currentState = currentState.setState(new AggressiveState());
-                //Console.WriteLine("State after change is: " + currentState.ToString());
+                Console.WriteLine("State after change is: " + currentState.ToString());
+       
             }
         }
 

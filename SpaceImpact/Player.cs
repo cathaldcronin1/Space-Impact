@@ -36,21 +36,21 @@ namespace SpaceImpact
             }
         }
 
-        public void SetScore(int score)
+        public void addScore(int score)
         {
-            this.score = score;
+            this.score += score;
             NotifyObserver();
         }
 
-        public void SetHealth(int health)
+        public void addHealth(int health)
         {
-            this.health = health;
+            this.health += health;
             NotifyObserver();
         }
 
-        public void SetAmmo(int ammo)
+        public void addAmmo(int ammo)
         {
-            this.ammo = ammo;
+            this.ammo += ammo;
             NotifyObserver();
         }
     }
