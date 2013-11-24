@@ -45,8 +45,13 @@
     <Compile Include="Command\MoveRightCommand.cs" />
     <Compile Include="Command\MoveUpCommand.cs" />
     <Compile Include="Command\NoCommand.cs" />
-    <Compile Include="Composite\GamePlayScreen.cs" />
-    <Compile Include="Composite\StartScreen.cs" />
+    <Compile Include="Composite\attempt2\MenuItem.cs" />
+    <Compile Include="Composite\attempt2\MenuLeaf.cs" />
+    <Compile Include="Composite\attempt2\StartMenu.cs" />
+    <Compile Include="Screens\GamePlayScreen.cs" />
+    <Compile Include="Composite\attempt2\MenuComponent.cs" />
+    <Compile Include="Composite\MyMenuItem.cs" />
+    <Compile Include="Screens\StartScreen.cs" />
     <Compile Include="Decorator\BasicGun.cs" />
     <Compile Include="Decorator\LightArmor.cs" />
     <Compile Include="Decorator\ShipHull.cs" />
