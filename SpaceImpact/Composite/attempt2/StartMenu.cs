@@ -10,7 +10,9 @@ namespace SpaceImpact
 {
     class StartMenu : MenuComponent
     {
-        protected String[] menuitems = { "Start Game", "Quit game" };
+        private String[] menuitems = { "Start Game", "Quit game" };
+        private KeyboardState keyState, oldKeyboardState;
+        private Color tint;
 
         public StartMenu()
         {
@@ -19,25 +21,21 @@ namespace SpaceImpact
 
         public void Update()
         {
-            base.Update(this.menuitems);
-            //if start game pressed
-            // switch screen state to gamescreen
-            // if quit game pressed
-            // quit game
-            //Console
-            if ((CheckKey(Keys.Down)) && (selectedIndex == 0))
-            {
+            MeasureMenu();
+            keyState = Keyboard.GetState();
+
+            if (keyState.IsKeyDown(Keys.Enter) && (selectedIndex == 0))
                 Game1.Instance.StartGame();
-            }
-            if ((CheckKey(Keys.Down)) && (selectedIndex == 1))
-            {
+            if (keyState.IsKeyDown(Keys.Enter) && (selectedIndex == 1))
                 Game1.Instance.Exit();
-            }
+
+            oldKeyboardState = keyState;
+
+            base.Update(this.menuitems);
         }
 
         public override void Draw(SpriteBatch spritebatch)
         {
-            Color tint; 
             for (int i = 0; i < menuitems.Length; i++)
             {
                 if (i == selectedIndex)
@@ -55,10 +53,18 @@ namespace SpaceImpact
 
         }
 
-         private bool CheckKey(Keys theKey)
+        public void MeasureMenu()
         {
-            return keyboardState.IsKeyUp(theKey) &&
-                oldKeyboardState.IsKeyDown(theKey);
+            height = 0;
+            width = 0;
+            foreach (string item in menuitems)
+            {
+                Vector2 size = spriteFont.MeasureString(item);
+                if (size.X > width)
+                    width = size.X;
+                height += spriteFont.LineSpacing + 5;
+            }
+            position = new Vector2((Game1.Instance.Window.ClientBounds.Width - width) / 2, (Game1.Instance.Window.ClientBounds.Height) / 2);
         }
     }
 }
