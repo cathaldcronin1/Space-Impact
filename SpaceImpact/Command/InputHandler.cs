@@ -9,22 +9,24 @@ namespace SpaceImpact
 {
     public class InputHandler
     {
-        private ShipHull playerShip;
+        private Player playerShip;
         private Command moveRight;
         private Command moveLeft;
         private Command moveUp;
         private Command moveDown;
+        private Command shoot;
 
         GamePadState gamePadState;
         I_InputDevice input;
 
-        public InputHandler(ShipHull player)
+        public InputHandler(Player player)
         {
             playerShip = player;
             moveRight = new MoveRightCommand(playerShip);
             moveLeft = new MoveLeftCommand(playerShip);
             moveUp = new MoveUpCommand(playerShip);
             moveDown = new MoveDownCommand(playerShip);
+            shoot = new ShootCommand(playerShip);
 
             gamePadState = GamePad.GetState(PlayerIndex.One);
 
@@ -55,6 +57,11 @@ namespace SpaceImpact
             {
                 Console.WriteLine("Down key pressed");
                 moveDown.Execute();
+            }
+            if (input.Shoot())
+            {
+                Console.WriteLine("Shoot key pressed");
+                shoot.Execute();
             }
         }
     

@@ -46,7 +46,10 @@ namespace SpaceImpact
 
         public bool Shoot()
         {
-            throw new NotImplementedException();
+            if (gamepadState.Buttons.A == ButtonState.Pressed)
+                return true;
+            else
+                return false;
         }
 
         public void Update()
