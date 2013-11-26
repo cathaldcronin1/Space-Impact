@@ -14,29 +14,33 @@ namespace SpaceImpact
         private Game1 game;
         private KeyboardState lastState;
 
+        StartMenu startmenu;
+        private Vector2 position;
+        private int height;
+        private int width;
+
+        public int SelectedIndex
+        {
+            get { return startmenu.SelectedIndex; }
+            set { startmenu.SelectedIndex = value; }
+        }
+
         public StartScreen(Game1 game)
         {
             this.game = game;
+            startmenu = new StartMenu();
             texture = game.Content.Load<Texture2D>("game1.png");
             lastState = Keyboard.GetState();
         }
 
         public void Update()
         {
-            KeyboardState keyboardState = Keyboard.GetState();
-
-            if (keyboardState.IsKeyDown(Keys.Enter) && lastState.IsKeyUp(Keys.Enter))
-            {
-               game.StartGame();
-            }
-
-            lastState = keyboardState;
+            startmenu.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (texture != null)
-                spriteBatch.Draw(texture, new Vector2(0f, 0f), Color.White);
+            startmenu.Draw(spriteBatch);
         }
     }
 }

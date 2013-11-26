@@ -30,9 +30,9 @@ namespace SpaceImpact
 
         public Game1(): base()
         {
-            Instance = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Instance = this;
         }
 
         protected override void Initialize()
