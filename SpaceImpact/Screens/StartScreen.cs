@@ -19,28 +19,26 @@ namespace SpaceImpact
         private int height;
         private int width;
 
-        public int SelectedIndex
-        {
-            get { return startmenu.SelectedIndex; }
-            set { startmenu.SelectedIndex = value; }
-        }
+        //List<string> list = new List<string>();
+        //list.Add("Start Game");
+        //list.Add("Quit");
 
         public StartScreen(Game1 game)
         {
             this.game = game;
-            startmenu = new StartMenu();
+            //startmenu = new StartMenu(list);
             texture = game.Content.Load<Texture2D>("game1.png");
             lastState = Keyboard.GetState();
         }
 
         public void Update()
         {
-            startmenu.Update();
+            //startmenu.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            startmenu.Draw(spriteBatch);
+            //startmenu.Draw(this.startMenuItems, spriteBatch) ;
         }
     }
 }

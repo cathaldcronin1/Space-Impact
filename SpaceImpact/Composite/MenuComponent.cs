@@ -14,8 +14,9 @@ namespace SpaceImpact
 {
     public abstract class MenuComponent
     {
-        protected string[] menuItems;
+        protected List<string> menuItems;
         protected int selectedIndex;
+        protected string name;
 
         protected Color hilite = Color.Yellow;
         protected Color normal = Color.Gray;
@@ -44,36 +45,42 @@ namespace SpaceImpact
             get { return height; }
         }
 
-        public MenuComponent(List<MenuComponent> menuItems)
+        public MenuComponent(List<string> componentName)
         {
-            this.menuItems = menuItems;
+            foreach (string item in menuItems)
+                this.menuItems.Add(item);
         }
 
-        public virtual void Update(String[] menuitems)
+        public void addComponent(string menuItem)
+        {
+            this.menuItems.Add(menuItem);
+        }
+
+        public virtual void Update(List<string> menuitems)
         {
             keyboardState = Keyboard.GetState();
 
             if (CheckKey(Keys.Down))
             {
                 selectedIndex++;
-                if (selectedIndex == menuitems.Length)
+                if (selectedIndex == menuitems.Count)
                     selectedIndex = 0;
             }
             if (CheckKey(Keys.Up))
             {
                 selectedIndex--;
                 if (selectedIndex < 0)
-                    selectedIndex = menuitems.Length - 1;
+                    selectedIndex = menuitems.Count - 1;
             }
+            MeasureMenu();
 
             oldKeyboardState = keyboardState;
         }
 
-        public virtual void Draw(SpriteBatch spritebatch)
+        public virtual void Draw(List<string> menuitems, SpriteBatch spritebatch)
         {
-            Vector2 location = position;
             Color tint;
-            for (int i = 0; i < menuItems.Length; i++)
+            for (int i = 0; i < menuItems.Count; i++)
             {
                 if (i == selectedIndex)
                 {
@@ -84,8 +91,8 @@ namespace SpaceImpact
                     tint = normal;
                 }
 
-                spritebatch.DrawString(spriteFont, menuItems[i], location, tint);
-                location.Y += spriteFont.LineSpacing + 5;
+                spritebatch.DrawString(spriteFont, menuItems[i], position, tint);
+                position.Y += spriteFont.LineSpacing + 5;
             }
         }
 
@@ -97,8 +104,8 @@ namespace SpaceImpact
                 selectedIndex = value;
                 if (selectedIndex < 0)
                     selectedIndex = 0;
-                if (selectedIndex >= menuItems.Length)
-                    selectedIndex = menuItems.Length - 1;
+                if (selectedIndex >= menuItems.Count())
+                    selectedIndex = menuItems.Count() - 1;
             }
         }
 
@@ -108,5 +115,18 @@ namespace SpaceImpact
                 oldKeyboardState.IsKeyDown(theKey);
         }
 
+        public void MeasureMenu()
+        {
+            height = 0;
+            width = 0;
+            foreach (string item in menuItems)
+            {
+                Vector2 size = spriteFont.MeasureString(item);
+                if (size.X > width)
+                    width = size.X;
+                height += spriteFont.LineSpacing + 5;
+            }
+            position = new Vector2((Game1.Instance.Window.ClientBounds.Width - width) / 2, (Game1.Instance.Window.ClientBounds.Height) / 2);
+        }
     }
 }
