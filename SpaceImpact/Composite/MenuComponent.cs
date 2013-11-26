@@ -12,9 +12,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SpaceImpact
 {
-    public abstract class MenuComponent
+    public class MenuComponent
     {
-        protected List<string> menuItems;
+        protected List<string> menuItems = new List<string>();
         protected int selectedIndex;
         protected string name;
 
@@ -47,7 +47,7 @@ namespace SpaceImpact
 
         public MenuComponent(List<string> componentName)
         {
-            foreach (string item in menuItems)
+            foreach (string item in componentName)
                 this.menuItems.Add(item);
         }
 

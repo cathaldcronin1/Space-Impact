@@ -13,32 +13,25 @@ namespace SpaceImpact
         private Texture2D texture;
         private Game1 game;
         private KeyboardState lastState;
+        private StartMenu startmenu;
 
-        StartMenu startmenu;
-        private Vector2 position;
-        private int height;
-        private int width;
-
-        //List<string> list = new List<string>();
-        //list.Add("Start Game");
-        //list.Add("Quit");
-
+        List<string> startMenuItems = new List<string>() { "Start Game", "Quit" };
         public StartScreen(Game1 game)
         {
             this.game = game;
-            //startmenu = new StartMenu(list);
+            startmenu = new StartMenu(startMenuItems);
             texture = game.Content.Load<Texture2D>("game1.png");
             lastState = Keyboard.GetState();
         }
 
         public void Update()
         {
-            //startmenu.Update();
+            startmenu.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //startmenu.Draw(this.startMenuItems, spriteBatch) ;
+            startmenu.Draw(this.startMenuItems, spriteBatch) ;
         }
     }
 }

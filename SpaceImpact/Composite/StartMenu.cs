@@ -10,8 +10,6 @@ namespace SpaceImpact
 {
     class StartMenu : MenuComponent
     {
-        //{ "Start Game", "Quit game" };
-
         public StartMenu(List<string> menuItem) : base(menuItem)
         {
             
