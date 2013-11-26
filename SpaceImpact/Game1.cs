@@ -19,6 +19,8 @@ namespace SpaceImpact
 
     public class Game1 : Game
     {
+        public static Game1 Instance;
+
         StartScreen startScreen;
         GamePlayScreen gamePlayScreen;
         Screen currentScreen;
@@ -28,6 +30,7 @@ namespace SpaceImpact
 
         public Game1(): base()
         {
+            Instance = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
@@ -92,6 +95,18 @@ namespace SpaceImpact
             currentScreen = Screen.GamePlayScreen;
 
             startScreen = null;
+        }
+
+        public bool OutOfBounds(Vector2 pos)
+        {
+            if ((pos.X + 100) < Window.ClientBounds.Left
+                || (pos.X - 100) > Window.ClientBounds.Right
+                || (pos.Y + 100) < Window.ClientBounds.Top
+                || (pos.Y - 100) > Window.ClientBounds.Bottom)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

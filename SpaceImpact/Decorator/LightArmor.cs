@@ -11,7 +11,7 @@ namespace SpaceImpact
         
         public override int Hitpoints
         {
-            get { return 20 + base.Hitpoints; }
+            get { return 50 + base.Hitpoints; }
             set { tempShip.Hitpoints = value; }
         }
 

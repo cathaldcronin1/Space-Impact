@@ -16,6 +16,9 @@ namespace SpaceImpact
         protected Vector2 velocity;
         protected I_ShipState currentState;
 
+        private int hitpoints;
+        private int weaponDamage;
+
         public ShipHull()
         {
             // TODO: Complete member initialization
@@ -27,6 +30,8 @@ namespace SpaceImpact
             this.position = position;
             this.velocity = speed;
             this.currentState = currentState;
+            hitpoints = 100;
+            weaponDamage = 20;
         }
 
         public Vector2 Position
@@ -34,13 +39,13 @@ namespace SpaceImpact
             get { return position; }
         }
         
-        // Get the width of the player ship
+        // Get the width of the ship
         public int Width
         {
             get { return textureImage.Width; }
         }
 
-        // Get the height of the player ship
+        // Get the height of the ship
         public int Height
         {
             get { return textureImage.Height; }
@@ -48,14 +53,14 @@ namespace SpaceImpact
 
         public int Hitpoints
         {
-            get { return 100; }
-            set { Hitpoints = value; }
+            get { return hitpoints; }
+            set { hitpoints = value; }
         }
 
         public int WeaponDamage
         {
-            get { return 20; }
-            set { WeaponDamage = value; }
+            get { return weaponDamage; }
+            set { weaponDamage = value; }
         }
 
         public string Description
@@ -69,10 +74,6 @@ namespace SpaceImpact
             if (currentState != null)
             {
                 currentState.Update(gameTime, this);
-                Console.WriteLine("State before change is: " + currentState.ToString());
-                currentState = currentState.setState(new AggressiveState());
-                Console.WriteLine("State after change is: " + currentState.ToString());
-       
             }
         }
 
@@ -99,6 +100,11 @@ namespace SpaceImpact
         public void MoveRight()
         {
             this.position.X += 1f;
+        }
+
+        public virtual void Shoot()
+        {
+            GamePlayScreen.bulletFactory.ShootBulletEnemy(new Vector2(this.Position.X + Width / 2, this.Position.Y + Width / 2), WeaponDamage);
         }
     }
 }

@@ -16,6 +16,21 @@ namespace SpaceImpact
             tempShip = newShip;
         }
 
+        public Vector2 Position
+        {
+            get { return tempShip.Position; }
+        }
+
+        public int Width
+        {
+            get { return tempShip.Width; }
+        }
+
+        public int Height
+        {
+            get { return tempShip.Height; }
+        }
+
         public virtual int Hitpoints
         {
             get { return tempShip.Hitpoints; }
