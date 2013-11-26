@@ -13,6 +13,10 @@ namespace SpaceImpact
         int WeaponDamage { get; set; }
         string Description { get; set; }
 
+        Vector2 Position { get; }
+        int Width { get; }
+        int Height { get; }
+
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spritebatch);
     }

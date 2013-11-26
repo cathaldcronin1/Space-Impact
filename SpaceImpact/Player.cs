@@ -53,5 +53,11 @@ namespace SpaceImpact
             this.ammo += ammo;
             NotifyObserver();
         }
+
+        public override void Shoot()
+        {
+            GamePlayScreen.bulletFactory.ShootBulletPlayer(new Vector2(this.Position.X + Width / 2, this.Position.Y + Width / 2), WeaponDamage);
+            Console.WriteLine("here");
+        }
     }
 }

@@ -47,7 +47,10 @@ namespace SpaceImpact
 
         public bool Shoot()
         {
-            throw new NotImplementedException();
+            if (keyState.IsKeyDown(Keys.Space) && !oldKeyState.IsKeyDown(Keys.Space))
+                return true;
+            else
+                return false;
         }
 
         public void Update()

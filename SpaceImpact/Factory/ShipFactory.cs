@@ -11,10 +11,12 @@ namespace SpaceImpact
     public class ShipFactory
     {
         private ContentManager content;
+        private Texture2D weakEnemyTexture;
 
         public ShipFactory(ContentManager content) 
         {
             this.content = content;
+            weakEnemyTexture = content.Load<Texture2D>("enemy.png");
         }
 
         public Ship CreateEnemy(int rand)
