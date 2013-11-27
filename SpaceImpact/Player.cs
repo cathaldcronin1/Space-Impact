@@ -16,6 +16,12 @@ namespace SpaceImpact
             : base(textureImage, position, speed,null)
         {
             observers = new List<I_Observer>();
+            addHealth(100);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            CheckBounds();
         }
 
         public void Register(I_Observer o)
@@ -58,6 +64,18 @@ namespace SpaceImpact
         {
             GamePlayScreen.bulletFactory.ShootBulletPlayer(new Vector2(this.Position.X + Width / 2, this.Position.Y + Width / 2), WeaponDamage);
             Console.WriteLine("here");
+        }
+
+        private void CheckBounds()
+        {
+            if (Position.X <= Game1.Instance.Window.ClientBounds.Left)
+                position.X = 0;
+            if (Position.X >= Game1.Instance.Window.ClientBounds.Right - Width)
+                position.X = Game1.Instance.Window.ClientBounds.Right - Width;
+            if (Position.Y <= Game1.Instance.Window.ClientBounds.Top + 25)
+                position.Y = 25;
+            if (Position.Y >= Game1.Instance.Window.ClientBounds.Bottom - Height)
+                position.Y = Game1.Instance.Window.ClientBounds.Bottom - Height;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace SpaceImpact
         public ProjectileFactory(ContentManager content)
         {
             this.content = content;
-            bulletTexture = content.Load<Texture2D>("bullet.png");
+            bulletTexture = content.Load<Texture2D>("bulletSmall.png");
             left = new Vector2(-1,0);
             right = new Vector2(1,0);
             projectiles = new List<Projectile>();
