@@ -31,6 +31,9 @@ namespace SpaceImpact
         public Game1(): base()
         {
             graphics = new GraphicsDeviceManager(this);
+            //graphics.IsFullScreen = true;
+            //graphics.PreferredBackBufferHeight = 720;
+            //graphics.PreferredBackBufferWidth = 1280;
             Content.RootDirectory = "Content";
             Instance = this;
         }
@@ -71,7 +74,7 @@ namespace SpaceImpact
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
 
             switch (currentScreen)

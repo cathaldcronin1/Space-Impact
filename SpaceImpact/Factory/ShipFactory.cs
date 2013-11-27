@@ -27,14 +27,6 @@ namespace SpaceImpact
             {
                 return null;//Create tough enemy
             }
-            else if (rand > 70)
-            {
-                return null;//create Strong enemy
-            }
-            else if (rand > 30)
-            {
-                return null;//create medium enemy
-            }
             else
             {
                 return CreateWeakEnemy();
@@ -43,8 +35,8 @@ namespace SpaceImpact
 
         private Ship CreateWeakEnemy()
         {
-            return new BasicGun(new ShipHull(content.Load<Texture2D>("enemy.png"), new Vector2(Game1.Instance.Window.ClientBounds.Right, 
-                rand.Next(Game1.Instance.Window.ClientBounds.Top, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new PassiveState()));
+            return new BasicGun(new ShipHull(weakEnemyTexture, new Vector2(Game1.Instance.Window.ClientBounds.Right, 
+                rand.Next(Game1.Instance.Window.ClientBounds.Top + 50, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new PassiveState()));
         }
     }
 }

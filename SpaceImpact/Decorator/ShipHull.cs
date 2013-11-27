@@ -32,6 +32,7 @@ namespace SpaceImpact
             this.currentState = currentState;
             hitpoints = 100;
             weaponDamage = 20;
+            
         }
 
         public Vector2 Position
@@ -69,12 +70,11 @@ namespace SpaceImpact
             set { Description = value; }
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             if (currentState != null)
             {
                 currentState.Update(gameTime, this);
-                currentState = currentState.setState(new PassiveState());
             }
         }
 
@@ -85,22 +85,22 @@ namespace SpaceImpact
 
         public void MoveUp()
         {
-            this.position.Y -= 1.5f;
+            this.position.Y -= 4f;
         }
 
         public void MoveDown()
         {
-            this.position.Y += 1.5f;
+            this.position.Y += 4f;
         }
 
         public void MoveLeft()
         {
-            this.position.X -= 1f;
+            this.position.X -= 2f;
         }
 
         public void MoveRight()
         {
-            this.position.X += 1f;
+            this.position.X += 2f;
         }
 
         public virtual void Shoot()
