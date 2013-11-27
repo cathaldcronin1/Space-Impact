@@ -74,7 +74,7 @@ namespace SpaceImpact
             if (currentState != null)
             {
                 currentState.Update(gameTime, this);
-                currentState = currentState.setState(new AggressiveState());
+                currentState = currentState.setState(new PassiveState());
             }
         }
 

@@ -44,7 +44,8 @@ namespace SpaceImpact
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             startScreen = new StartScreen(this);
-            currentScreen = Screen.StartScreen;
+            gamePlayScreen = new GamePlayScreen(this);
+            currentScreen = Screen.GamePlayScreen;
 
         }
 
