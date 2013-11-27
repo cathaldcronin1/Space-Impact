@@ -21,17 +21,27 @@ namespace SpaceImpact
         Rectangle enemyBounds;
         Rectangle projectileBounds;
 
+        Random rand;
+        int spawnTimeMin = 2000;
+        int spawnTimeMax = 4000;
+        int nextSpawnTime = 1;
+
+        int enemyScore = 50;
+
+
         public GamePlayScreen(Game1 game)
         {
             this.game = game;
             factory = new ShipFactory(this.game.Content);
             player = new Player(game.Content.Load<Texture2D>("player.png"), new Vector2(100, 100), Vector2.Zero);
+
             bulletFactory = new ProjectileFactory(this.game.Content);
             inputHandler = new InputHandler(player);
             hud = new HUDDisplay(player, this.game.Content.Load<SpriteFont>("MyFont"));
 
             enemies = new List<Ship>();
-            enemies.Add((Ship)factory.CreateEnemy(0));
+            player.NotifyObserver();
+            rand = new Random();
         }
 
         public void Update(GameTime gameTime)
@@ -39,6 +49,12 @@ namespace SpaceImpact
             bulletFactory.Update(gameTime);
             inputHandler.Update(gameTime);
 
+            nextSpawnTime -= gameTime.ElapsedGameTime.Milliseconds;
+            if (nextSpawnTime <= 0)
+            {
+                enemies.Add(factory.CreateEnemy(0));
+                nextSpawnTime = rand.Next(spawnTimeMin, spawnTimeMax);
+            }
 
             foreach (Ship enemy in enemies)
             {
@@ -69,6 +85,7 @@ namespace SpaceImpact
                 if (enemy.Hitpoints <= 0)
                 {
                     enemies.Remove(enemy);
+                    player.addScore(enemyScore);
                     break;
                 }
                 enemyBounds = new Rectangle((int)(enemy.Position.X - enemy.Width / 2), (int)(enemy.Position.Y - enemy.Height / 2), enemy.Width, enemy.Height);
@@ -96,6 +113,7 @@ namespace SpaceImpact
                     {
                         enemy.Hitpoints = enemy.Hitpoints - p.Damage;
                         bulletFactory.Protectiles.Remove(p);
+
                         return;
                     }
                 }

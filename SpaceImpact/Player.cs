@@ -16,6 +16,7 @@ namespace SpaceImpact
             : base(textureImage, position, speed,null)
         {
             observers = new List<I_Observer>();
+            addHealth(100);
         }
 
         public void Register(I_Observer o)
