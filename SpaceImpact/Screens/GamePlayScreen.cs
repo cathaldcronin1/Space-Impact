@@ -46,9 +46,10 @@ namespace SpaceImpact
 
         public void Update(GameTime gameTime)
         {
-            player.Update(gameTime);
+            
             bulletFactory.Update(gameTime);
             inputHandler.Update(gameTime);
+            player.Update(gameTime);
 
             nextSpawnTime -= gameTime.ElapsedGameTime.Milliseconds;
             if (nextSpawnTime <= 0)

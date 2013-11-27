@@ -36,7 +36,7 @@ namespace SpaceImpact
         private Ship CreateWeakEnemy()
         {
             return new BasicGun(new ShipHull(weakEnemyTexture, new Vector2(Game1.Instance.Window.ClientBounds.Right, 
-                rand.Next(Game1.Instance.Window.ClientBounds.Top + 50, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new PassiveState()));
+                rand.Next(Game1.Instance.Window.ClientBounds.Top + 30, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new PassiveState()));
         }
     }
 }
