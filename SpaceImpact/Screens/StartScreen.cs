@@ -10,28 +10,29 @@ namespace SpaceImpact
 {
     class StartScreen
     {
-        private Texture2D texture;
-        private Game1 game;
-        private KeyboardState lastState;
-        private StartMenu startmenu;
-
-        List<string> startMenuItems = new List<string>() { "Start Game", "Quit" };
+        MenuComponent startMenu = new MenuItem("");
+        MenuComponent options = new MenuItem("options");
         public StartScreen(Game1 game)
         {
-            this.game = game;
-            startmenu = new StartMenu(startMenuItems);
-            texture = game.Content.Load<Texture2D>("game1.png");
-            lastState = Keyboard.GetState();
+            Console.WriteLine("1111111111111");
+
+            options.add(new MenuItem("Credits"));
+
+            startMenu.add(new MenuItem("Start Game"));
+            startMenu.add(options);
+            startMenu.add(new MenuItem("Quit"));
+            
+            Console.WriteLine("222222222222");
         }
 
         public void Update()
         {
-            startmenu.Update();
+            //startmenu.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            startmenu.Draw(this.startMenuItems, spriteBatch) ;
+            startMenu.Draw(spriteBatch) ;
         }
     }
 }

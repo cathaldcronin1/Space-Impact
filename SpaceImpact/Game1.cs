@@ -50,28 +50,32 @@ namespace SpaceImpact
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
-            switch (currentScreen)
-            {
-                case Screen.StartScreen:
-                    if (startScreen != null)
-                        startScreen.Update();
-                    break;
-                case Screen.GamePlayScreen:
-                    if (gamePlayScreen != null)
-                        gamePlayScreen.Update(gameTime);
-                    break;
-            }
 
-            base.Update(gameTime);
+            //startMenu.Update();
+            //switch (currentScreen)
+            //{
+            //    case Screen.StartScreen:
+            //        if (startScreen != null)
+            //            startScreen.Update();
+            //        break;
+            //    case Screen.GamePlayScreen:
+            //        if (gamePlayScreen != null)
+            //            gamePlayScreen.Update(gameTime);
+            //        break;
+            //}
+
+            //base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+
+            //startMenu.Draw(spriteBatch);
 
             switch (currentScreen)
             {

@@ -8,26 +8,21 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceImpact
 {
-    class StartMenu : MenuComponent
+
+    class StartMenu 
     {
-        public StartMenu(List<string> menuItem) : base(menuItem)
+
+        MenuComponent menuList;
+
+        public StartMenu(MenuComponent newMenuComponent)
         {
-            
+            menuList = newMenuComponent;
         }
 
-        public void Update()
+        public void draw(SpriteBatch spritebatch)
         {
-            if (base.keyboardState.IsKeyDown(Keys.Enter) && (selectedIndex == 0))
-                Game1.Instance.StartGame();
-            if (base.keyboardState.IsKeyDown(Keys.Enter) && (selectedIndex == 1))
-                Game1.Instance.Exit();
-
-            base.Update(base.menuItems);
+            menuList.Draw(spritebatch);
         }
 
-        public override void Draw(List<string> menuitems, SpriteBatch spritebatch)
-        {
-            base.Draw(base.menuItems, spritebatch);
-        }
     }
 }
