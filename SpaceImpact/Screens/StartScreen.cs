@@ -5,33 +5,42 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using SpaceImpact.Screens;
 
 namespace SpaceImpact
 {
     class StartScreen
     {
-        private Texture2D texture;
-        private Game1 game;
-        private KeyboardState lastState;
-        private StartMenu startmenu;
+        // Start Menu has 3 items
+        // 2 leafs and 1 composite
+        // Start Game, Quit Game, options
+        MenuComponent startMenu = new MenuItem();
 
-        List<string> startMenuItems = new List<string>() { "Start Game", "Quit" };
-        public StartScreen(Game1 game)
+        // Options will be a composite of item(s)
+        // Contains a leaf node - Credits
+        MenuComponent options = new MenuItem();
+
+        public StartScreen()
         {
-            this.game = game;
-            startmenu = new StartMenu(startMenuItems);
-            texture = game.Content.Load<Texture2D>("game1.png");
-            lastState = Keyboard.GetState();
+            options.add(new Credits());
+
+            startMenu.add(new StartGame());
+            startMenu.add(options);
+            startMenu.add(new QuitGame());
         }
 
         public void Update()
         {
-            startmenu.Update();
+            // move menu  handling to here
+            // based on currently selected component 
+            // call that leaf/menuitems execute method?
+
+            startMenu.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            startmenu.Draw(this.startMenuItems, spriteBatch) ;
+            startMenu.Draw(spriteBatch);
         }
     }
 }

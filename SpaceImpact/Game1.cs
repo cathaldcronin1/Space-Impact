@@ -14,7 +14,8 @@ namespace SpaceImpact
     enum Screen
     {
         StartScreen,
-        GamePlayScreen
+        GamePlayScreen,
+        CreditScreen
     }
 
     public class Game1 : Game
@@ -23,6 +24,7 @@ namespace SpaceImpact
 
         StartScreen startScreen;
         GamePlayScreen gamePlayScreen;
+        CreditsScreen creditsScreen;
         Screen currentScreen;
 
         GraphicsDeviceManager graphics;
@@ -31,9 +33,6 @@ namespace SpaceImpact
         public Game1(): base()
         {
             graphics = new GraphicsDeviceManager(this);
-            //graphics.IsFullScreen = true;
-            //graphics.PreferredBackBufferHeight = 720;
-            //graphics.PreferredBackBufferWidth = 1280;
             Content.RootDirectory = "Content";
             Instance = this;
         }
@@ -46,17 +45,20 @@ namespace SpaceImpact
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            startScreen = new StartScreen(this);
+            startScreen = new StartScreen();
             gamePlayScreen = new GamePlayScreen(this);
-            currentScreen = Screen.GamePlayScreen;
+            creditsScreen = new CreditsScreen();
+            currentScreen = Screen.StartScreen;
 
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
+
+            //startScreen.Update();
             switch (currentScreen)
             {
                 case Screen.StartScreen:
@@ -66,6 +68,11 @@ namespace SpaceImpact
                 case Screen.GamePlayScreen:
                     if (gamePlayScreen != null)
                         gamePlayScreen.Update(gameTime);
+                    break;
+                case Screen.CreditScreen:
+                    if (creditsScreen != null)
+                        break;
+                        //creditsScreen.Update(gameTime);
                     break;
             }
 
@@ -77,6 +84,8 @@ namespace SpaceImpact
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
 
+            //startMenu.Draw(spriteBatch);
+
             switch (currentScreen)
             {
                 case Screen.StartScreen:
@@ -87,6 +96,11 @@ namespace SpaceImpact
                     if (gamePlayScreen != null)
                         gamePlayScreen.Draw(spriteBatch);
                     break;
+                case Screen.CreditScreen:
+                    if (creditsScreen != null)
+                        creditsScreen.Draw(spriteBatch);
+                    break;
+                //creditsScreen.Update(gameTime);
             }
             spriteBatch.End();
 
@@ -100,6 +114,15 @@ namespace SpaceImpact
 
             startScreen = null;
         }
+
+        public void CreditsScreen()
+        {
+            creditsScreen = new CreditsScreen();
+            currentScreen = Screen.CreditScreen;
+
+            startScreen = null;
+        }
+
 
         public bool OutOfBounds(Vector2 pos)
         {
