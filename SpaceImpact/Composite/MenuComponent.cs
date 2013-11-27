@@ -35,7 +35,7 @@ namespace SpaceImpact
             throw new NotImplementedException();
         }
 
-        public void Update()
+        public virtual void Update()
         {
             throw new NotImplementedException();
         }

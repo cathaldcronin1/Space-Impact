@@ -45,10 +45,14 @@
     <Compile Include="Command\MoveRightCommand.cs" />
     <Compile Include="Command\MoveUpCommand.cs" />
     <Compile Include="Command\NoCommand.cs" />
-    <Compile Include="Composite\StartMenu.cs" />
+    <Compile Include="Composite\Credits.cs" />
+    <Compile Include="Composite\Leaf.cs" />
+    <Compile Include="Screens\CreditsScreen.cs" />
     <Compile Include="Screens\GamePlayScreen.cs" />
     <Compile Include="Composite\MenuComponent.cs" />
     <Compile Include="Composite\MenuItem.cs" />
+    <Compile Include="Composite\QuitGame.cs" />
+    <Compile Include="Composite\StartGame.cs" />
     <Compile Include="Screens\StartScreen.cs" />
     <Compile Include="Command\ShootCommand.cs" />
     <Compile Include="Decorator\BasicGun.cs" />
