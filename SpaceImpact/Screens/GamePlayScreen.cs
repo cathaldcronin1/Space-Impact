@@ -23,8 +23,6 @@ namespace SpaceImpact
         ShipFactory factory;
         HUDDisplay hud;
 
-
-       
         List<IShip> enemies;
 
         // Collision rectanlge bounds for objects on screen.
