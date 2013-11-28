@@ -52,7 +52,6 @@
     <Compile Include="Decorator\HeavyShield.cs" />
     <Compile Include="Screens\GamePlayScreen.cs" />
     <Compile Include="Composite\MenuComponent.cs" />
-    <Compile Include="Composite\MyMenuItem.cs" />
     <Compile Include="Screens\StartScreen.cs" />
     <Compile Include="Command\ShootCommand.cs" />
     <Compile Include="Decorator\BasicGun.cs" />
