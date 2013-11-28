@@ -8,6 +8,7 @@ namespace SpaceImpact
 {
     interface I_InputDevice
     {
+        // Defines input methods to implemented in concrete input devices.
         bool Up();
         bool Down();
         bool Left();

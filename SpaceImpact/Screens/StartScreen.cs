@@ -21,9 +21,13 @@ namespace SpaceImpact
 
         Color tint;
 
+        // Keyboard and gamepad states for checking input.
         KeyboardState keyState = Keyboard.GetState();
         KeyboardState oldKeyState;
+        GamePadState gamepadState = GamePad.GetState(PlayerIndex.One);
+        GamePadState oldGamepadState;
 
+        // Delegates for executing in leaf nodes
         public delegate void ExecuteMethod();
         private ExecuteMethod startGame;
         private ExecuteMethod mute;
@@ -75,7 +79,11 @@ namespace SpaceImpact
             oldKeyState = keyState;
             keyState = Keyboard.GetState();
 
-            if (keyState.IsKeyDown(Keys.Down) && !oldKeyState.IsKeyDown(Keys.Down))
+            oldGamepadState = gamepadState;
+            gamepadState = GamePad.GetState(PlayerIndex.One);
+
+            if ((keyState.IsKeyDown(Keys.Down) && !oldKeyState.IsKeyDown(Keys.Down))
+                || (gamepadState.DPad.Down == ButtonState.Pressed && oldGamepadState.DPad.Down != ButtonState.Pressed))
             {
                 // DeSelect the current item in the menu so that it is no longer highlighted.
                 currentMenu.GetList().ElementAt(selectedIndex).DeSelect();
@@ -88,7 +96,8 @@ namespace SpaceImpact
                 currentMenu.GetList().ElementAt(selectedIndex).Select();
             }
 
-            if (keyState.IsKeyDown(Keys.Up) && !oldKeyState.IsKeyDown(Keys.Up))
+            if ((keyState.IsKeyDown(Keys.Up) && !oldKeyState.IsKeyDown(Keys.Up))
+                || (gamepadState.DPad.Up == ButtonState.Pressed && oldGamepadState.DPad.Up != ButtonState.Pressed))
             {
                 // DeSelect the current item in the menu so that it is no longer highlighted.
                 currentMenu.GetList().ElementAt(selectedIndex).DeSelect();
@@ -101,7 +110,8 @@ namespace SpaceImpact
                 currentMenu.GetList().ElementAt(selectedIndex).Select();
             }
 
-            if (keyState.IsKeyDown(Keys.Enter) && !oldKeyState.IsKeyDown(Keys.Enter))
+            if ((keyState.IsKeyDown(Keys.Enter) && !oldKeyState.IsKeyDown(Keys.Enter))
+                || (gamepadState.Buttons.A == ButtonState.Pressed && oldGamepadState.Buttons.A != ButtonState.Pressed))
             {
                 // Checks if currently selected element is a MenuLeaf.
                 if (currentMenu.GetList().ElementAt(selectedIndex) is MenuLeaf)
