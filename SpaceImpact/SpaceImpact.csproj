@@ -48,6 +48,7 @@
     <Compile Include="Composite\MenuLeaf.cs" />
     <Compile Include="Decorator\HeavyGun.cs" />
     <Compile Include="Decorator\HeavyShield.cs" />
+    <Compile Include="UnitTest\Player_Tests.cs" />
     <Compile Include="Screens\CreditsScreen.cs" />
     <Compile Include="Screens\GamePlayScreen.cs" />
     <Compile Include="Composite\IMenuComponent.cs" />
@@ -74,6 +75,10 @@
     <Compile Include="State\IShipState.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\NUnit 2.6.3\bin\framework\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK">
       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\OpenTK.dll</HintPath>
     </Reference>
