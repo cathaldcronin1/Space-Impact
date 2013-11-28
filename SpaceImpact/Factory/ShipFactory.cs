@@ -15,6 +15,10 @@ namespace SpaceImpact
         private Texture2D toughEnemyTexture;
         Random rand;
         
+        /// <summary>
+        /// Creates an instance of a ShipFactory.
+        /// </summary>
+        /// <param name="content"></param>
         public ShipFactory(ContentManager content) 
         {
             this.content = content;
@@ -23,7 +27,12 @@ namespace SpaceImpact
             rand = new Random();
         }
 
-        public Ship CreateEnemy(int rand)
+        /// <summary>
+        /// Creates a Ship. 
+        /// </summary>
+        /// <param name="rand">Int passed to determine which ship should be created.</param>
+        /// <returns>Ship</returns>
+        public IShip CreateEnemy(int rand)
         {
             if (rand > 75)
             {
@@ -35,13 +44,21 @@ namespace SpaceImpact
             }
         }
 
-        private Ship CreateWeakEnemy()
+        /// <summary>
+        /// Creates a weak enemy ship using the decorator pattern.
+        /// </summary>
+        /// <returns></returns>
+        private IShip CreateWeakEnemy()
         {
             return new BasicGun(new ShipHull(weakEnemyTexture, new Vector2(Game1.Instance.Window.ClientBounds.Right, 
                 rand.Next(Game1.Instance.Window.ClientBounds.Top + 30, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new PassiveState()));
         }
 
-        private Ship CreateToughEnemy()
+        /// <summary>
+        /// Creates a strong enemy ship using the decorator pattern.
+        /// </summary>
+        /// <returns></returns>
+        private IShip CreateToughEnemy()
         {
             return new HeavyShield(new HeavyGun(new ShipHull(toughEnemyTexture, new Vector2(Game1.Instance.Window.ClientBounds.Right,
                 rand.Next(Game1.Instance.Window.ClientBounds.Top + 30, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new AggressiveState())));

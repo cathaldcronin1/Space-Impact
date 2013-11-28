@@ -8,11 +8,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceImpact
 {
-    public class KeyboardInput : I_InputDevice
+    public class KeyboardInput : IInputDevice
     {
+        // Keyboard states for checking input.
         KeyboardState keyState = Keyboard.GetState();
         KeyboardState oldKeyState;
 
+        /// <summary>
+        /// Checks if the up key on the keyboard has been pressed.
+        /// </summary>
+        /// <returns>bool</returns>
         public bool Up()
         {
             if (keyState.IsKeyDown(Keys.Up))
@@ -21,6 +26,10 @@ namespace SpaceImpact
                 return false;
         }
 
+        /// <summary>
+        /// Checks if the down key on the keyboard has been pressed.
+        /// </summary>
+        /// <returns>bool</returns>
         public bool Down()
         {
             if (keyState.IsKeyDown(Keys.Down))
@@ -29,6 +38,10 @@ namespace SpaceImpact
                 return false;
         }
 
+        /// <summary>
+        /// Checks if the left key on the keyboard has been pressed.
+        /// </summary>
+        /// <returns>bool</returns>
         public bool Left()
         {
             if (keyState.IsKeyDown(Keys.Left))
@@ -37,6 +50,10 @@ namespace SpaceImpact
                 return false;
         }
 
+        /// <summary>
+        /// Checks if the right key on the keyboard has been pressed.
+        /// </summary>
+        /// <returns>bool</returns>
         public bool Right()
         {
             if (keyState.IsKeyDown(Keys.Right))
@@ -45,6 +62,10 @@ namespace SpaceImpact
                 return false;
         }
 
+        /// <summary>
+        /// Checks if the space key on the keyboard has been pressed.
+        /// </summary>
+        /// <returns>bool</returns>
         public bool Shoot()
         {
             if (keyState.IsKeyDown(Keys.Space) && !oldKeyState.IsKeyDown(Keys.Space))
@@ -53,6 +74,9 @@ namespace SpaceImpact
                 return false;
         }
 
+        /// <summary>
+        /// Updates the keyboard states.
+        /// </summary>
         public void Update()
         {
             oldKeyState = keyState;

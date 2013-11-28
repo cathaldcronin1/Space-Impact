@@ -7,7 +7,7 @@ namespace SpaceImpact
 {
     public class LightArmor : ShipComponent
     {
-        public LightArmor(Ship newShip) : base(newShip) { }
+        public LightArmor(IShip newShip) : base(newShip) { }
         
         public override int Hitpoints
         {

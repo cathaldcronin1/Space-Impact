@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceImpact
 {
-    public class ControllerInput : I_InputDevice
+    public class ControllerInput : IInputDevice
     {
         // Gamepad states for checking input. 
         GamePadState gamepadState = GamePad.GetState(PlayerIndex.One);

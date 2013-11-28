@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceImpact
 {
-    public class MoveLeftCommand : Command
+    public class MoveLeftCommand : ICommand
     {
         ShipHull commandShip;
 
