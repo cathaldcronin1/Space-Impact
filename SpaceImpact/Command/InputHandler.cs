@@ -19,6 +19,10 @@ namespace SpaceImpact
         GamePadState gamePadState;
         I_InputDevice input;
 
+        /// <summary>
+        /// Create instance of an input handler and initialize commands.
+        /// </summary>
+        /// <param name="player"></param>
         public InputHandler(Player player)
         {
             playerShip = player;

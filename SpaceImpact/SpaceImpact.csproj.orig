@@ -36,31 +36,49 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Command\Command.cs" />
+    <Compile Include="Command\ControllerInput.cs" />
     <Compile Include="Command\InputHandler.cs" />
+    <Compile Include="Command\I_InputDevice.cs" />
+    <Compile Include="Command\KeyboardInput.cs" />
     <Compile Include="Command\MoveDownCommand.cs" />
     <Compile Include="Command\MoveLeftCommand.cs" />
     <Compile Include="Command\MoveRightCommand.cs" />
     <Compile Include="Command\MoveUpCommand.cs" />
     <Compile Include="Command\NoCommand.cs" />
+    <Compile Include="Composite\Menu.cs" />
+    <Compile Include="Composite\MenuLeaf.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="CreditsScreen.cs" />
+>>>>>>> bf50f61dedb635922de59531bbc12936dd3a5e5a
+    <Compile Include="Decorator\HeavyGun.cs" />
+    <Compile Include="Decorator\HeavyShield.cs" />
+    <Compile Include="Screens\GamePlayScreen.cs" />
+    <Compile Include="Composite\MenuComponent.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Screens\IScreen.cs" />
+>>>>>>> bf50f61dedb635922de59531bbc12936dd3a5e5a
+    <Compile Include="Screens\StartScreen.cs" />
+    <Compile Include="Command\ShootCommand.cs" />
     <Compile Include="Decorator\BasicGun.cs" />
     <Compile Include="Decorator\LightArmor.cs" />
     <Compile Include="Decorator\ShipHull.cs" />
+    <Compile Include="Factory\ProjectileFactory.cs" />
     <Compile Include="Factory\ShipFactory.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Observer\HUDDisplay.cs" />
+    <Compile Include="Observer\I_Observer.cs" />
+    <Compile Include="Observer\I_Subject.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decorator\Ship.cs" />
     <Compile Include="Decorator\ShipComponent.cs" />
-<<<<<<< HEAD
-    <Compile Include="State\ShipAI.cs" />
-    <Compile Include="State\BasicShipAI.cs" />
-    <Compile Include="State\ZigZagAI.cs" />
-=======
     <Compile Include="State\AggressiveState.cs" />
-    <Compile Include="State\passiveState.cs" />
-    <Compile Include="State\ShipBehaviour.cs" />
->>>>>>> 3341281b6d2a960f80dcbc445bd9c578bdf808b5
+    <Compile Include="State\PassiveState.cs" />
+    <Compile Include="State\I_ShipState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -79,20 +97,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\SDL.dll">
-      <Link>SDL.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Content\bulletSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\enemy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\player.png">
+    <Content Include="Content\enemy2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\player1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="\..\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\SDL.dll">
+      <Link>SDL.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\game1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\gameover.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Composite\" />
+    <EmbeddedResource Include="Content\MyFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
