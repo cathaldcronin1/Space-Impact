@@ -6,26 +6,29 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceImpact
 {
-    public class PassiveState : I_ShipState
+    public class PassiveState : IShipState
     {
-        private int minShootTime = 2000;
-        private int maxShootTime = 4000;
+        private const int MinShootTime = 2000;
+        private const int MaxShootTime = 4000;
         private int nextShootTime = 500;
         private Random rand = new Random();
 
+        // Basic ship AI so it only needs to move left and shoot occasionally.
         public void Update(GameTime gameTime, ShipHull ship)
         {
+            // Period of when to shoot next projectile.
             nextShootTime -= gameTime.ElapsedGameTime.Milliseconds;
             if (nextShootTime <= 0)
             {
                 ship.Shoot();
-                nextShootTime = rand.Next(minShootTime, maxShootTime);
+                nextShootTime = rand.Next(MinShootTime, MaxShootTime);
             }
-            // AI logic goes here
+
             ship.MoveLeft();
         }
 
-        public I_ShipState setState(I_ShipState newState)
+        // Allows you to Dynamically change a ships state.
+        public IShipState SetState(IShipState newState)
         {
             return newState;
         }

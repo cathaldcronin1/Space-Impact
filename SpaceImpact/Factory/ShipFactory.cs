@@ -37,14 +37,14 @@ namespace SpaceImpact
 
         private Ship CreateWeakEnemy()
         {
-            return new BasicGun(new ShipHull(weakEnemyTexture, new Vector2(Game1.Instance.Window.ClientBounds.Right, 
-                rand.Next(Game1.Instance.Window.ClientBounds.Top + 30, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new PassiveState()));
+            return new BasicGun(new ShipHull(weakEnemyTexture, new Vector2(SpaceImpact.Instance.Window.ClientBounds.Right, 
+                rand.Next(SpaceImpact.Instance.Window.ClientBounds.Top + 30, SpaceImpact.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new PassiveState()));
         }
 
         private Ship CreateToughEnemy()
         {
-            return new HeavyShield(new HeavyGun(new ShipHull(toughEnemyTexture, new Vector2(Game1.Instance.Window.ClientBounds.Right,
-                rand.Next(Game1.Instance.Window.ClientBounds.Top + 30, Game1.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new AggressiveState())));
+            return new HeavyShield(new HeavyGun(new ShipHull(toughEnemyTexture, new Vector2(SpaceImpact.Instance.Window.ClientBounds.Right,
+                rand.Next(SpaceImpact.Instance.Window.ClientBounds.Top + 30, SpaceImpact.Instance.Window.ClientBounds.Bottom - 100)), Vector2.Zero, new AggressiveState())));
         }
     }
 }

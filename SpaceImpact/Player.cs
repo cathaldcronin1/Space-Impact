@@ -75,14 +75,14 @@ namespace SpaceImpact
 
         private void CheckBounds()
         {
-            if (Position.X <= Game1.Instance.Window.ClientBounds.Left)
+            if (Position.X <= SpaceImpact.Instance.Window.ClientBounds.Left)
                 position.X = 0;
-            if (Position.X >= Game1.Instance.Window.ClientBounds.Right - Width)
-                position.X = Game1.Instance.Window.ClientBounds.Right - Width;
-            if (Position.Y <= Game1.Instance.Window.ClientBounds.Top + 25)
+            if (Position.X >= SpaceImpact.Instance.Window.ClientBounds.Right - Width)
+                position.X = SpaceImpact.Instance.Window.ClientBounds.Right - Width;
+            if (Position.Y <= SpaceImpact.Instance.Window.ClientBounds.Top + 25)
                 position.Y = 25;
-            if (Position.Y >= Game1.Instance.Window.ClientBounds.Bottom - Height)
-                position.Y = Game1.Instance.Window.ClientBounds.Bottom - Height;
+            if (Position.Y >= SpaceImpact.Instance.Window.ClientBounds.Bottom - Height)
+                position.Y = SpaceImpact.Instance.Window.ClientBounds.Bottom - Height;
         }
     }
 }

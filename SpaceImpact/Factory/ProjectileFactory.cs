@@ -44,7 +44,7 @@ namespace SpaceImpact
             foreach (Projectile p in projectiles)
             {
                 p.Update(gameTime);
-                if (Game1.Instance.OutOfBounds(p.Position))
+                if (SpaceImpact.Instance.OutOfBounds(p.Position))
                 {
                     projectiles.Remove(p);
                     break;

@@ -60,7 +60,7 @@
     <Compile Include="Decorator\ShipHull.cs" />
     <Compile Include="Factory\ProjectileFactory.cs" />
     <Compile Include="Factory\ShipFactory.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="SpaceImpact.cs" />
     <Compile Include="Observer\HUDDisplay.cs" />
     <Compile Include="Observer\I_Observer.cs" />
     <Compile Include="Observer\I_Subject.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="Decorator\ShipComponent.cs" />
     <Compile Include="State\AggressiveState.cs" />
     <Compile Include="State\PassiveState.cs" />
-    <Compile Include="State\I_ShipState.cs" />
+    <Compile Include="State\IShipState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">

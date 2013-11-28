@@ -7,6 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceImpact
 {
+    /// <summary>
+    /// Interface for all screens to implement.
+    /// All screens need to be drawn and updated.
+    /// </summary>
     interface IScreen
     {
         void Update(GameTime gametime);

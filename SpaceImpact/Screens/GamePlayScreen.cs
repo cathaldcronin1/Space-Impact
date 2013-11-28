@@ -7,16 +7,25 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceImpact
 {
+    /// <summary>
+    /// Main Game screen.
+    /// All ingame logic is derived here.
+    /// </summary>
     public class GamePlayScreen : IScreen
     {
-        private Game1 game;
+        private SpaceImpact game;
         Player player;
+
+        // Static instance so the player can access it.
         public static ProjectileFactory bulletFactory;
         InputHandler inputHandler;
         ShipFactory factory;
         HUDDisplay hud;
 
+
         List<Ship> enemies;
+
+        // Collision rectanlge bounds for objects on screen.
         Rectangle playerBounds;
         Rectangle enemyBounds;
         Rectangle projectileBounds;
@@ -30,8 +39,11 @@ namespace SpaceImpact
 
         SpriteFont font;
 
-
-        public GamePlayScreen(Game1 game)
+        /// <summary>
+        /// An instance of our game.
+        /// When this screen is created, all in game objects are created.
+        /// </summary>
+        public GamePlayScreen(SpaceImpact game)
         {
             this.game = game;
             factory = new ShipFactory(this.game.Content);
@@ -47,13 +59,19 @@ namespace SpaceImpact
             rand = new Random();
         }
 
+        /// <summary>
+        /// Updates all components in the game.
+        /// </summary>
         public void Update(GameTime gameTime)
         {
-            elapsedTime = gameTime.TotalGameTime.Seconds;
+            // Call update for components in the game.
             bulletFactory.Update(gameTime);
             inputHandler.Update(gameTime);
             player.Update(gameTime);
 
+            // Spwan an enemy object if a certain amount of time has passed.
+            elapsedTime = gameTime.TotalGameTime.Seconds;
+            
             nextSpawnTime -= gameTime.ElapsedGameTime.Milliseconds;
             if (nextSpawnTime <= 0)
             {
@@ -66,9 +84,18 @@ namespace SpaceImpact
                 enemy.Update(gameTime);
             }
 
+            // Checks collision for:
+            // Player & enemy.
+            // Player bullets & enemies.
+            // Enemy bullets & player.
             CheckCollisions();
         }
 
+        /// <summary>
+        /// Draws all the components in the game.
+        /// Draws the player, enemies bullers and hud.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             bulletFactory.Draw(spriteBatch);
@@ -102,7 +129,7 @@ namespace SpaceImpact
                 }
             }
 
-            //check projectile collisions
+            // Check projectile collisions.
             foreach (Projectile p in bulletFactory.Protectiles)
             {
                 projectileBounds = new Rectangle((int)(p.Position.X), (int)(p.Position.Y), p.Width, p.Height);

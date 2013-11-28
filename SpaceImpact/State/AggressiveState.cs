@@ -6,16 +6,31 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceImpact
 {
-    public class AggressiveState : I_ShipState
+    public class AggressiveState : IShipState
     {
         private bool goingDown;
-        private int minShootTime = 1000;
-        private int maxShootTime = 2000;
+        private const int MinShootTime = 1000;
+        private const int MaxShootTime = 2000;
         private int nextShootTime = 500;
         private Random rand = new Random();
 
+        // Aggressive styled AI, Moves and shoots faster.
         public void Update(GameTime gameTime, ShipHull ship)
         {
+            // Period of when to shoot next projectile.
+            nextShootTime -= gameTime.ElapsedGameTime.Milliseconds;
+            if (nextShootTime <= 0)
+            {
+                ship.Shoot();
+                nextShootTime = rand.Next(MinShootTime, MaxShootTime);
+            }
+            if (ship.Position.Y < SpaceImpact.Instance.Window.ClientBounds.Top + 50)
+                goingDown = true;
+            else if (ship.Position.Y > SpaceImpact.Instance.Window.ClientBounds.Bottom - ship.Height)
+                goingDown = false;
+
+
+            // Movement behaviour of a ship
             if (goingDown)
             {
                 ship.MoveLeft();
@@ -27,19 +42,10 @@ namespace SpaceImpact
                 ship.MoveUp();
             }
 
-            nextShootTime -= gameTime.ElapsedGameTime.Milliseconds;
-            if (nextShootTime <= 0)
-            {
-                ship.Shoot();
-                nextShootTime = rand.Next(minShootTime, maxShootTime);
-            }
-            if (ship.Position.Y < Game1.Instance.Window.ClientBounds.Top + 50)
-                goingDown = true;
-            else if (ship.Position.Y > Game1.Instance.Window.ClientBounds.Bottom - ship.Height)
-                goingDown = false;
         }
 
-        public I_ShipState setState(I_ShipState newState)
+        // Allows you to Dynamically change a ships state.
+        public IShipState SetState(IShipState newState)
         {
             return newState;
         }

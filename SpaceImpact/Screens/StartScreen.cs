@@ -42,10 +42,10 @@ namespace SpaceImpact
         public StartScreen()
         {
             // Sets delegates to be passed into MenuLeaf items.
-            startGame = Game1.Instance.startGame;
-            quit = Game1.Instance.Exit;
-            mute = Game1.Instance.Exit;
-            credits = Game1.Instance.showCredits;
+            startGame = SpaceImpact.Instance.startGame;
+            quit = SpaceImpact.Instance.Exit;
+            mute = SpaceImpact.Instance.Exit;
+            credits = SpaceImpact.Instance.showCredits;
             back = Back; //Locally Implemented Function.
 
             // Initializing options menu to be added to the main menu.
@@ -65,7 +65,7 @@ namespace SpaceImpact
             
             menuPosition = new Vector2(100, 100);
             // Loading font for drawing the menu items.
-            font = Game1.Instance.Content.Load<SpriteFont>("MyFont");
+            font = SpaceImpact.Instance.Content.Load<SpriteFont>("MyFont");
 
             
         }

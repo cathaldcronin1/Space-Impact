@@ -14,7 +14,7 @@ namespace SpaceImpact
         private Texture2D textureImage;
         protected Vector2 position;
         protected Vector2 velocity;
-        protected I_ShipState currentState;
+        protected IShipState currentState;
 
         private int hitpoints;
         private int weaponDamage;
@@ -24,7 +24,7 @@ namespace SpaceImpact
             // TODO: Complete member initialization
         }
 
-        public ShipHull(Texture2D textureImage, Vector2 position, Vector2 speed, I_ShipState currentState)
+        public ShipHull(Texture2D textureImage, Vector2 position, Vector2 speed, IShipState currentState)
         {
             this.textureImage = textureImage;
             this.position = position;
