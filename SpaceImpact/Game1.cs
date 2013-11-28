@@ -20,7 +20,6 @@ namespace SpaceImpact
     public class Game1 : Game
     {
         public static Game1 Instance;
-
         StartScreen startScreen;
         GamePlayScreen gamePlayScreen;
         Screen currentScreen;
@@ -46,9 +45,9 @@ namespace SpaceImpact
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            startScreen = new StartScreen(this);
+            startScreen = new StartScreen();
             gamePlayScreen = new GamePlayScreen(this);
-            currentScreen = Screen.GamePlayScreen;
+            currentScreen = Screen.StartScreen;
 
         }
 
@@ -61,7 +60,7 @@ namespace SpaceImpact
             {
                 case Screen.StartScreen:
                     if (startScreen != null)
-                        startScreen.Update();
+                        startScreen.Update(gameTime);
                     break;
                 case Screen.GamePlayScreen:
                     if (gamePlayScreen != null)

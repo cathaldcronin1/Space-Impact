@@ -45,7 +45,11 @@
     <Compile Include="Command\MoveRightCommand.cs" />
     <Compile Include="Command\MoveUpCommand.cs" />
     <Compile Include="Command\NoCommand.cs" />
+    <Compile Include="Composite\Menu.cs" />
+    <Compile Include="Composite\MenuLeaf.cs" />
     <Compile Include="Composite\StartMenu.cs" />
+    <Compile Include="Decorator\HeavyGun.cs" />
+    <Compile Include="Decorator\HeavyShield.cs" />
     <Compile Include="Screens\GamePlayScreen.cs" />
     <Compile Include="Composite\MenuComponent.cs" />
     <Compile Include="Composite\MyMenuItem.cs" />
@@ -91,6 +95,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\enemy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\enemy2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\player1.png">

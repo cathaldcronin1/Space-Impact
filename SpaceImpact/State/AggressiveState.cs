@@ -9,6 +9,10 @@ namespace SpaceImpact
     public class AggressiveState : I_ShipState
     {
         private bool goingDown;
+        private int minShootTime = 1000;
+        private int maxShootTime = 2000;
+        private int nextShootTime = 500;
+        private Random rand = new Random();
 
         public void Update(GameTime gameTime, ShipHull ship)
         {
@@ -23,9 +27,15 @@ namespace SpaceImpact
                 ship.MoveUp();
             }
 
-            if (ship.Position.Y < 50)
+            nextShootTime -= gameTime.ElapsedGameTime.Milliseconds;
+            if (nextShootTime <= 0)
+            {
+                ship.Shoot();
+                nextShootTime = rand.Next(minShootTime, maxShootTime);
+            }
+            if (ship.Position.Y < Game1.Instance.Window.ClientBounds.Top + 50)
                 goingDown = true;
-            else if (ship.Position.Y > 350)
+            else if (ship.Position.Y > Game1.Instance.Window.ClientBounds.Bottom - ship.Height)
                 goingDown = false;
         }
 

@@ -5,25 +5,25 @@ using System.Text;
 
 namespace SpaceImpact
 {
-    public class BasicGun : ShipComponent
+    public class HeavyShield : ShipComponent
     {
-        public BasicGun(Ship newShip) : base(newShip) { }
-        
+        public HeavyShield(Ship newShip) : base(newShip) { }
+
         public override int Hitpoints
         {
-            get { return base.Hitpoints; }
+            get { return 60 + base.Hitpoints; }
             set { tempShip.Hitpoints = value; }
         }
 
         public override int WeaponDamage
         {
-            get { return 10 + base.WeaponDamage; }
+            get { return base.WeaponDamage; }
             set { tempShip.WeaponDamage = value; }
         }
 
         public override string Description
         {
-            get { return "Basic Gun, " + base.Description; }
+            get { return "Heavy Shield, " + base.Description; }
             set { tempShip.Description = value; }
         }
     }

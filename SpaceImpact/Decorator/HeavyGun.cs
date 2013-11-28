@@ -5,9 +5,9 @@ using System.Text;
 
 namespace SpaceImpact
 {
-    public class BasicGun : ShipComponent
+    public class HeavyGun : ShipComponent
     {
-        public BasicGun(Ship newShip) : base(newShip) { }
+        public HeavyGun(Ship newShip) : base(newShip) { }
         
         public override int Hitpoints
         {
@@ -17,13 +17,13 @@ namespace SpaceImpact
 
         public override int WeaponDamage
         {
-            get { return 10 + base.WeaponDamage; }
+            get { return 30 + base.WeaponDamage; }
             set { tempShip.WeaponDamage = value; }
         }
 
         public override string Description
         {
-            get { return "Basic Gun, " + base.Description; }
+            get { return "Heavy Gun, " + base.Description; }
             set { tempShip.Description = value; }
         }
     }

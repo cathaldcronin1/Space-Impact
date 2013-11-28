@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+
 namespace SpaceImpact
 {
     public class Player : ShipHull, I_Subject
@@ -16,7 +17,10 @@ namespace SpaceImpact
             : base(textureImage, position, speed,null)
         {
             observers = new List<I_Observer>();
-            addHealth(100);
+            Hitpoints = 100;
+            WeaponDamage = 50;
+            AddAmmo(100);
+            AddHealth(100);
         }
 
         public override void Update(GameTime gameTime)
@@ -42,19 +46,19 @@ namespace SpaceImpact
             }
         }
 
-        public void addScore(int score)
+        public void AddScore(int score)
         {
             this.score += score;
             NotifyObserver();
         }
 
-        public void addHealth(int health)
+        public void AddHealth(int health)
         {
             this.health += health;
             NotifyObserver();
         }
 
-        public void addAmmo(int ammo)
+        public void AddAmmo(int ammo)
         {
             this.ammo += ammo;
             NotifyObserver();
@@ -62,8 +66,11 @@ namespace SpaceImpact
 
         public override void Shoot()
         {
-            GamePlayScreen.bulletFactory.ShootBulletPlayer(new Vector2(this.Position.X + Width / 2, this.Position.Y + Width / 2), WeaponDamage);
-            Console.WriteLine("here");
+            if (ammo > 0)
+            {
+                GamePlayScreen.bulletFactory.ShootBulletPlayer(new Vector2(this.Position.X + Width / 2, this.Position.Y + Width / 2), WeaponDamage);
+                AddAmmo(-1);
+            }
         }
 
         private void CheckBounds()

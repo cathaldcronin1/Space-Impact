@@ -46,7 +46,7 @@ namespace SpaceImpact
 
         public bool Shoot()
         {
-            if (gamepadState.Buttons.A == ButtonState.Pressed)
+            if (gamepadState.Buttons.A == ButtonState.Pressed && oldGamepadState.Buttons.A != ButtonState.Pressed)
                 return true;
             else
                 return false;
