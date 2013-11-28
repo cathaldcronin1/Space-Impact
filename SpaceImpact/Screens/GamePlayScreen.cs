@@ -17,7 +17,7 @@ namespace SpaceImpact
         Player player;
 
         // Static instance so the player can access it.
-        public static ProjectileFactory bulletFactory;
+        public static ProjectileManager bulletFactory;
 
         InputHandler inputHandler;
         ShipFactory factory;
