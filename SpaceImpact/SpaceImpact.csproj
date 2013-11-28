@@ -47,9 +47,9 @@
     <Compile Include="Command\NoCommand.cs" />
     <Compile Include="Composite\Menu.cs" />
     <Compile Include="Composite\MenuLeaf.cs" />
-    <Compile Include="CreditsScreen.cs" />
     <Compile Include="Decorator\HeavyGun.cs" />
     <Compile Include="Decorator\HeavyShield.cs" />
+    <Compile Include="Screens\CreditsScreen.cs" />
     <Compile Include="Screens\GamePlayScreen.cs" />
     <Compile Include="Composite\MenuComponent.cs" />
     <Compile Include="Screens\IScreen.cs" />
