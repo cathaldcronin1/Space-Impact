@@ -35,10 +35,10 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Command\Command.cs" />
+    <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\ControllerInput.cs" />
     <Compile Include="Command\InputHandler.cs" />
-    <Compile Include="Command\I_InputDevice.cs" />
+    <Compile Include="Command\IInputDevice.cs" />
     <Compile Include="Command\KeyboardInput.cs" />
     <Compile Include="Command\MoveDownCommand.cs" />
     <Compile Include="Command\MoveLeftCommand.cs" />
@@ -50,24 +50,24 @@
     <Compile Include="Decorator\HeavyShield.cs" />
     <Compile Include="Screens\CreditsScreen.cs" />
     <Compile Include="Screens\GamePlayScreen.cs" />
-    <Compile Include="Composite\MenuComponent.cs" />
+    <Compile Include="Composite\IMenuComponent.cs" />
     <Compile Include="Screens\IScreen.cs" />
     <Compile Include="Screens\StartScreen.cs" />
     <Compile Include="Command\ShootCommand.cs" />
     <Compile Include="Decorator\BasicGun.cs" />
     <Compile Include="Decorator\LightArmor.cs" />
     <Compile Include="Decorator\ShipHull.cs" />
-    <Compile Include="Factory\ProjectileFactory.cs" />
+    <Compile Include="ProjectileManager.cs" />
     <Compile Include="Factory\ShipFactory.cs" />
     <Compile Include="SpaceImpact.cs" />
     <Compile Include="Observer\HUDDisplay.cs" />
-    <Compile Include="Observer\I_Observer.cs" />
-    <Compile Include="Observer\I_Subject.cs" />
+    <Compile Include="Observer\IObserver.cs" />
+    <Compile Include="Observer\ISubject.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Decorator\Ship.cs" />
+    <Compile Include="Decorator\IShip.cs" />
     <Compile Include="Decorator\ShipComponent.cs" />
     <Compile Include="State\AggressiveState.cs" />
     <Compile Include="State\PassiveState.cs" />
