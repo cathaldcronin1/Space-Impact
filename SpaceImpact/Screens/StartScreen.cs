@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceImpact
 {
-    public class StartScreen
+    public class StartScreen : IScreen
     {
         Menu mainMenu;
         Menu options;
@@ -38,10 +38,10 @@ namespace SpaceImpact
         public StartScreen()
         {
             // Sets delegates to be passed into MenuLeaf items.
-            startGame = Game1.Instance.StartGame;
+            startGame = Game1.Instance.startGame;
             quit = Game1.Instance.Exit;
             mute = Game1.Instance.Exit;
-            credits = Game1.Instance.Exit;
+            credits = Game1.Instance.showCredits;
             back = Back; //Locally Implemented Function.
 
             // Initializing options menu to be added to the main menu.
