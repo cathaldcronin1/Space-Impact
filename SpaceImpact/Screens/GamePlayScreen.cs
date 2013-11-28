@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceImpact
 {
-    public class GamePlayScreen
+    public class GamePlayScreen : IScreen
     {
         private Game1 game;
         Player player;

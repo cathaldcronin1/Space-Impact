@@ -20,9 +20,11 @@ namespace SpaceImpact
     public class Game1 : Game
     {
         public static Game1 Instance;
+
+        IScreen currentScreen;
         StartScreen startScreen;
         GamePlayScreen gamePlayScreen;
-        Screen currentScreen;
+        CreditsScreen creditsScreen;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -37,18 +39,14 @@ namespace SpaceImpact
             Instance = this;
         }
 
-        protected override void Initialize()
-        {
-            base.Initialize();
-        }
-
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             startScreen = new StartScreen();
             gamePlayScreen = new GamePlayScreen(this);
-            currentScreen = Screen.StartScreen;
-
+            creditsScreen = new CreditsScreen();
+            ;
+            currentScreen = startScreen;
         }
 
         protected override void Update(GameTime gameTime)
@@ -56,48 +54,30 @@ namespace SpaceImpact
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            switch (currentScreen)
-            {
-                case Screen.StartScreen:
-                    if (startScreen != null)
-                        startScreen.Update(gameTime);
-                    break;
-                case Screen.GamePlayScreen:
-                    if (gamePlayScreen != null)
-                        gamePlayScreen.Update(gameTime);
-                    break;
-            }
-
-            base.Update(gameTime);
+            currentScreen.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
-
-            switch (currentScreen)
-            {
-                case Screen.StartScreen:
-                    if (startScreen != null)
-                        startScreen.Draw(spriteBatch);
-                    break;
-                case Screen.GamePlayScreen:
-                    if (gamePlayScreen != null)
-                        gamePlayScreen.Draw(spriteBatch);
-                    break;
-            }
+            currentScreen.Draw(spriteBatch);
             spriteBatch.End();
-
-            base.Draw(gameTime);
         }
 
-        public void StartGame()
+        public void startGame()
         {
-            gamePlayScreen = new GamePlayScreen(this);
-            currentScreen = Screen.GamePlayScreen;
+            currentScreen = gamePlayScreen;
+        }
 
-            startScreen = null;
+        public void showCredits()
+        {
+            currentScreen = creditsScreen;
+        }
+
+        public void mainMenu()
+        {
+            currentScreen = startScreen;
         }
 
         public bool OutOfBounds(Vector2 pos)
