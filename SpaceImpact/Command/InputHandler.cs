@@ -10,14 +10,14 @@ namespace SpaceImpact
     public class InputHandler
     {
         private Player playerShip;
-        private Command moveRight;
-        private Command moveLeft;
-        private Command moveUp;
-        private Command moveDown;
-        private Command shoot;
+        private ICommand moveRight;
+        private ICommand moveLeft;
+        private ICommand moveUp;
+        private ICommand moveDown;
+        private ICommand shoot;
 
         GamePadState gamePadState;
-        I_InputDevice input;
+        IInputDevice input;
 
         /// <summary>
         /// Create instance of an input handler and initialize commands.
@@ -34,12 +34,16 @@ namespace SpaceImpact
 
             gamePadState = GamePad.GetState(PlayerIndex.One);
 
+            // If a gamepad is connected, changes input strategy to the gamepad.
             if (gamePadState.IsConnected)
                 input = new ControllerInput();
             else
                 input = new KeyboardInput();
         }
 
+        /// <summary>
+        /// Checks input device for keypresses.
+        /// </summary>
         public void HandleInput()
         {
             if (input.Left())
@@ -68,7 +72,11 @@ namespace SpaceImpact
                 shoot.Execute();
             }
         }
-    
+        
+        /// <summary>
+        /// Updates the input device and checks for input.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             HandleInput();

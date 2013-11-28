@@ -7,7 +7,7 @@ namespace SpaceImpact
 {
     public class HeavyGun : ShipComponent
     {
-        public HeavyGun(Ship newShip) : base(newShip) { }
+        public HeavyGun(IShip newShip) : base(newShip) { }
         
         public override int Hitpoints
         {

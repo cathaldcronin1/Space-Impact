@@ -5,10 +5,10 @@ using System.Text;
 
 namespace SpaceImpact
 {
-    public interface I_Subject
+    public interface ISubject
     {
-        void Register(I_Observer o);
-        void Unregister(I_Observer o);
+        void Register(IObserver o);
+        void Unregister(IObserver o);
         void NotifyObserver();
     }
 }

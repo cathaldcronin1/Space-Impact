@@ -7,11 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceImpact
 {
-    public abstract class ShipComponent : Ship
+    public abstract class ShipComponent : IShip
     {
-        protected Ship tempShip;
+        protected IShip tempShip;
 
-        public ShipComponent(Ship newShip)
+        /// <summary>
+        /// Creates and instance of a ship component.
+        /// </summary>
+        /// <param name="newShip"></param>
+        public ShipComponent(IShip newShip)
         {
             tempShip = newShip;
         }

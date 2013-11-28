@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceImpact
 {
-    interface I_InputDevice
+    interface IInputDevice
     {
         // Defines input methods to implemented in concrete input devices.
         bool Up();

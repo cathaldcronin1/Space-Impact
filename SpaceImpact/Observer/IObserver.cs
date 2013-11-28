@@ -5,8 +5,8 @@ using System.Text;
 
 namespace SpaceImpact
 {
-    public interface Command
+    public interface IObserver
     {
-        void Execute();
+        void UpdateStats(int score, int health, int ammo);
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 
 namespace SpaceImpact
 {
-    public interface MenuComponent
+    public interface IMenuComponent
     {
-        void Add(MenuComponent c);
+        // Methods to be implemented for menu tree.
+        void Add(IMenuComponent c);
         void Select();
         void DeSelect();
         bool Selected();

@@ -5,10 +5,8 @@ using System.Text;
 
 namespace SpaceImpact
 {
-    class NoCommand : Command
+    public interface ICommand
     {
-        public void Execute()
-        {
-        }
+        void Execute();
     }
 }

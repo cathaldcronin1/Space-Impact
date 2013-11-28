@@ -8,22 +8,21 @@ using System.Threading;
 
 namespace SpaceImpact
 {
-    public class ShipHull : Ship
+    public class ShipHull : IShip
     {
 
         private Texture2D textureImage;
         protected Vector2 position;
         protected Vector2 velocity;
+
         protected IShipState currentState;
 
         private int hitpoints;
         private int weaponDamage;
 
-        public ShipHull()
-        {
-            // TODO: Complete member initialization
-        }
-
+        /// <summary>
+        /// Create instance of a shiphull. This is a concrete implemenation of a ship.
+        /// </summary>
         public ShipHull(Texture2D textureImage, Vector2 position, Vector2 speed, IShipState currentState)
         {
             this.textureImage = textureImage;
@@ -70,6 +69,10 @@ namespace SpaceImpact
             set { Description = value; }
         }
 
+        /// <summary>
+        /// Update the AI for the enemy ships.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
         {
             if (currentState != null)
@@ -78,6 +81,10 @@ namespace SpaceImpact
             }
         }
 
+        /// <summary>
+        /// Draw the space ship.
+        /// </summary>
+        /// <param name="spritebatch"></param>
         public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.Draw(textureImage, this.position, Color.White);
@@ -103,9 +110,12 @@ namespace SpaceImpact
             this.position.X += 2f;
         }
 
+        /// <summary>
+        /// Uses the bullet factory to shoot a projectile.
+        /// </summary>
         public virtual void Shoot()
         {
-            GamePlayScreen.bulletFactory.ShootBulletEnemy(new Vector2(this.Position.X + Width / 2, this.Position.Y + Width / 2), WeaponDamage);
+            GamePlayScreen.bulletFactory.ShootBulletLeft(new Vector2(this.Position.X + Width / 2, this.Position.Y + Width / 2), WeaponDamage);
         }
     }
 }
