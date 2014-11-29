@@ -119,6 +119,7 @@ namespace SpaceImpact
                 {
                     enemies.Remove(enemy);
                     player.AddScore(enemyScore);
+                    player.AddAmmo(10);
                     break;
                 }
                 enemyBounds = new Rectangle((int)(enemy.Position.X), (int)(enemy.Position.Y), enemy.Width, enemy.Height);

@@ -48,6 +48,7 @@
     <Compile Include="Composite\MenuLeaf.cs" />
     <Compile Include="Decorator\HeavyGun.cs" />
     <Compile Include="Decorator\HeavyShield.cs" />
+    <Compile Include="Screens\GameOverScreen.cs" />
     <Compile Include="UnitTest\Player_Tests.cs" />
     <Compile Include="Screens\CreditsScreen.cs" />
     <Compile Include="Screens\GamePlayScreen.cs" />
